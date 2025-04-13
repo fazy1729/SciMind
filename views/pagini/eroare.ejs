@@ -1,18 +1,13 @@
-{
-    "eroare_default": {
-        "titlu": "Eroare",
-        "text": "A apărut o eroare neașteptată",
-        "imagine": "/resurse/imagini/eroare/default.jpg",
-        "status": false
-    },
-    "info_erori": [
-        {
-            "identificator": 404,
-            "titlu": "Pagina nu există",
-            "text": "Pagina pe care o căutați nu a putut fi găsită.",
-            "imagine": "/resurse/imagini/eroare/404.jpg",
-            "status": true
-        }
-    ],
-    "cale_baza": ""
-}
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= titlu %></title>
+</head>
+<body>
+    <h1><%= titlu %></h1>
+    <p><%= text %></p>
+    <img src="<%= imagine %>" alt="Imagine eroare">
+</body>
+</html>
