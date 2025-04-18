@@ -17,7 +17,7 @@
         
 
         <main class = "grid">
-            <section id="zone1">
+            <section id="zone1" class="grid-zone">
                     <h1>Explore the Fascinating World of Quantum Physics and Artificial Intelligence!</h1>
                     <p>Discover interactive educational resources, online courses, and the latest scientific breakthroughs.</p>
                     <a href="#quantum-physics" class="cta-button">Start Your Journey</a>
@@ -72,7 +72,7 @@
             </section> 
     
             <!--QUANTUM MECHANICS SECTION-->
-            <section id="zona8" class="science-showcase">
+            <section id="zona8"  class="grid-zone">
                 <!-- Hero Section -->
                 <div class="science-hero">
                   <h2>Quantum Mechanics: The Science of the Infinitely Small</h2>
@@ -123,18 +123,44 @@
                      class="cta-button secondary">
                     Download Quantum Mechanics Textbook
                   </a>
+
+                  <!--MATHML FORMULA-->
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle displaystyle="true">
+                      <mrow>
+                        <!-- E cu font italic și culoare roșie -->
+                        <mi mathvariant="italic">
+                          <mstyle mathcolor="red">E</mstyle>
+                        </mi>
+                        <!-- = cu stil normal -->
+                        <mo>=</mo>
+                        <!-- m cu bold și culoare albastră -->
+                        <mi>
+                          <mstyle mathvariant="bold" mathcolor="blue">m</mstyle>
+                        </mi>
+                        <!-- c cu font italic și culoare verde, la pătrat -->
+                        <msup>
+                          <mi>
+                            <mstyle mathvariant="italic" mathcolor="green">c</mstyle>
+                          </mi>
+                          <mn>2</mn>
+                        </msup>
+                      </mrow>
+                    </mstyle>
+                  </math>
+                  
                 </div>
               
             </section>
 
      
         
-        <div section id="zona4">
+        <div section id="zona4" class="grid-zone">
             <h2>Anunțuri</h2>
             <p>Acesta este un placeholder pentru secțiunea de anunțuri. Actualizați cu anunțuri relevante.</p>
         </div>
 
-        <div section id="zona5">
+        <div section id="zona5" class="grid-zone">
             <h2>Utilizatori Online</h2>
             <ul>
               <li>Utilizator 1</li>
@@ -144,18 +170,16 @@
             </ul>
           </div>
 
-          <div section id="zona6">
+          <div section id="zona6" class="grid-zone">
             <h2>Date despre Utilizator și Statistici</h2>
-            <p>Acesta este un placeholder pentru informațiile despre utilizator și statistici.</p>
             <ul>
-              <li><strong>Utilizator:</strong> [Numele utilizatorului]</li>
-              <li><strong>Accesibilitate:</strong> [Detalii]</li>
-              <li><strong>Statistici:</strong> [Detalii]</li>
+                <li><strong>IP utilizator:</strong> <%= ip %></li>
+                <li><strong>Accesibilitate:</strong> [Detalii]</li>
+                <li><strong>Statistici:</strong> [Detalii]</li>
             </ul>
-          </div>
+        </div>
 
-
-          <div section id="zona7">
+          <div section id="zona7" class="grid-zone">
             <h2>Date despre Site și Server</h2>
             <p>Acesta este un placeholder pentru informațiile despre site și server.</p>
             <ul>
@@ -168,7 +192,7 @@
 
           
 
-          <div section id="zona3">
+          <div section id="zona3" class="grid-zone">
             <h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta quasi architecto quidem ipsam dolor. Nisi aperiam eveniet voluptate officia. Repudiandae, quaerat vel laboriosam quia nulla consectetur sunt voluptates iusto tempore.</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil sed voluptatem harum non, blanditiis sunt quia culpa. Eum enim ipsum neque necessitatibus voluptate doloremque soluta veniam commodi pariatur incidunt? Debitis..</p>
           </div>

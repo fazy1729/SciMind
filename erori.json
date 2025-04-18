@@ -1,19 +1,25 @@
 {
+    "cale_baza": "/resurse/imagini/erori",
     "eroare_default": {
       "titlu": "Eroare",
-      "text": "A apărut o eroare neașteptată",
-      "imagine": "/resurse/imagini/eroare/default.jpg",
-      "status": false
+      "text": "A apărut o eroare necunoscută",
+      "imagine": "default.jpg",
+      "status": 500
     },
     "info_erori": [
       {
         "identificator": 404,
-        "titlu": "Pagina nu există",
-        "text": "Pagina pe care o căutați nu a putut fi găsită.",
-        "imagine": "/resurse/imagini/eroare/404.jpg",
-        "status": true
+        "titlu": "Pagina nu a fost găsită",
+        "text": "Pagina pe care încercați să o accesați nu există.",
+        "imagine": "404.jpg",
+        "status": 404
+      },
+      {
+        "identificator": 403,
+        "titlu": "Acces interzis",
+        "text": "Nu aveți permisiunea de a vizualiza acest director.",
+        "imagine": "403.jpg",
+        "status": 403
       }
-    ],
-    "cale_baza": ""
+    ]
   }
-  
