@@ -6,6 +6,10 @@ global.obGlobal = {
     obErori: null
 };
 
+// Vectorul cu folderele necesare
+const vect_foldere = ["temp"]; // Poți adăuga "temp1" pentru testare
+
+
 function initErori() {
     const eroriRaw = fs.readFileSync("erori.json");
     const eroriJson = JSON.parse(eroriRaw);
@@ -18,11 +22,39 @@ function initErori() {
     obGlobal.obErori = eroriJson;
 }
 
+
+
+// Funcția pentru crearea folderelor dacă nu există
+function initFoldere() {
+    vect_foldere.forEach(folder => {
+        const caleFolder = path.join(__dirname, folder); // Calea absolută
+        if (!fs.existsSync(caleFolder)) {
+            fs.mkdirSync(caleFolder, { recursive: true });
+            console.log(`Folderul ${caleFolder} a fost creat.`);
+        } else {
+            console.log(`Folderul ${caleFolder} există deja.`);
+        }
+    });
+}
+
+
 // Configurare
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 initErori();
+initFoldere();
+
+
+
+app.use((req, res, next) => {
+    // Verifică dacă URL-ul se termină cu .ejs
+    if (req.url.toLowerCase().endsWith('.ejs')) {
+        return afisareEroare(res, 400);
+    }
+    next();
+});
+
 
 // Middleware pentru /resurse
 app.use("/resurse", (req, res, next) => {
@@ -54,6 +86,8 @@ app.get(["/", "/index", "/home"], (req, res) => {
         titlu: "SciMind - Pagina principală" 
     });
 });
+
+
 app.get("/favicon.ico", (req, res) => {
     res.sendFile(path.join(__dirname, "resurse/ico/favicon.ico"));
 });

@@ -6,6 +6,10 @@
   --content-bg: #2C3531;
   --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   --hover-box-shadow: 0 8px 20px rgba(255, 203, 154, 0.4);
+  --culoare-link-neschimbat: #2c3e50;       /* Culoare normală */
+  --culoare-link-vizitat: #8e44ad;          /* Culoare pentru linkuri vizitate */
+  --culoare-hover: #e74c3c;                 /* Culoare hover */
+  --culoare-simbol-extern: #3498db;         /* Culoare simbol extern */ 
 }
 
 @media (max-width: 1024px) {
@@ -18,7 +22,7 @@
 
 @media (max-width: 768px) {
   :root {
-    --page-padding: 20px;
+    --page-padding: 50px;
     --grid-gap: 15px;
     --border-radius: 8px;
   }
@@ -228,16 +232,6 @@ h3 { font-size: 1.4rem; }
 
 p {
   margin-bottom: 15px;
-}
-
-a {
-  color: var(--accent-color);
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-a:hover {
-  color: #D1E8E2;
 }
 
 /* ===== RESPONSIVE ADJUSTMENTS ===== */
@@ -777,3 +771,107 @@ msup mo {
   display: block !important; 
 }
 
+
+
+
+
+
+
+/* Stiluri video */
+.video-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #000;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+#video-section {
+  transform: translateY(-135px); /* Mută secțiunea 50px în sus */
+  margin-bottom: 100px;
+}
+
+.responsive-video {
+  width: 100%;
+  min-width: 100px;
+  max-width: 100%;
+  display: block;
+}
+
+
+h2, .video-description {
+  text-align: center;
+  width: 100%;
+}
+
+/* Stiluri subtitrări */
+video::cue {
+  background-color: rgba(255, 255, 255, 0.3); /*ALB CU 30% OPACITATE*/
+  color: #222;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1em;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  position: center;
+}
+
+video::cue(c[lang="ro"]) {
+  font-weight: bold;
+}
+
+video::cue(c[lang="en"]) {
+  font-style: italic;
+}
+
+
+/* Stiluri generale pentru linkuri */
+a {
+  color: var(--culoare-link-neschimbat);
+  text-decoration: none;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Linkuri vizitate */
+a:visited {
+  color: var(--culoare-link-vizitat);
+}
+
+/* Linkuri externe - simbol ⮳ */
+a[href^="http"]::before {
+  content: "⮳";
+  display: inline-block;
+  font-size: 1.5em;                        /* 50% mai mare (presupunând font-size: 1em pe link) */
+  color: var(--culoare-simbol-extern);
+  margin-right: 0.3em;
+  vertical-align: middle;
+  transition: color 0.3s ease;
+}
+
+/* Hover pe linkuri externe - schimbă culoarea simbolului */
+a[href^="http"]:hover::before {
+  color: var(--culoare-hover);
+}
+
+/* Efect hover pentru linkuri din conținut (main) */
+main a {
+  /* Gradient radial oval */
+  background: 
+    radial-gradient(
+      ellipse at center,
+      rgba(238, 176, 60, 0.7) 0%,
+      rgba(238, 176, 60, 0.7) 40%,
+      transparent 80%,
+      transparent 100%
+    );
+  background-position: center;
+  background-size: 100% 0%; /* Lățime 100%, înălțime 0% inițial */
+  background-repeat: no-repeat;
+  transition: background-size 0.5s ease;
+  padding: 0.3em 0;
+  border-radius: 4px; /* Rotunjire ușoară */
+}
+
+main a:hover {
+  background-size: 100% 80%; /* Lățime 100%, înălțime 150% la hover */
+}

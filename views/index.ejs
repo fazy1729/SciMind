@@ -13,6 +13,8 @@
     
         <!-- Zona 1 -->
         
+
+        
         
         
 
@@ -70,6 +72,8 @@
                     </table>
                 </div>
             </section> 
+
+
     
             <!--QUANTUM MECHANICS SECTION-->
             <section id="zona8"  class="grid-zone">
@@ -199,8 +203,49 @@
 
 
 
+
+          
+
+
         </main>
 
+                      <!-- VIDEO SECTION -->
+  <section id="video-section" class="grid-zone">
+    <h2>Quantum Entanglement Explained</h2>
+    
+    <div class="video-container">
+      <video 
+        controls
+        poster="./resurse/video/quantum-video-poster.jpg"
+        preload="metadata"
+        class="responsive-video"
+      >
+        <!-- Surse video în formate diferite -->
+        <source src="./resurse/video/quantum.mp4" type="video/mp4">
+        <source src="./resurse/video/quantum.webm" type="video/webm">
+        
+        <!-- Trackuri subtitrări -->
+        <track 
+          kind="subtitles" 
+          src="./resurse/video/subtitles_ro.vtt" 
+          srclang="ro" 
+          label="Română" 
+          default>
+        <track 
+          kind="subtitles" 
+          src="./resurse/video/subtitles_eng.vtt" 
+          srclang="en" 
+          label="English">
+        
+        <p>Browserul tău nu suportă elementul video. Poți descărca videoclipul <a href="./resurse/video/quantum.mp4">aici</a>.</p>
+      </video>
+    </div>
+    
+    <div class="video-description">
+      <p>Experiment of Quantum Entanglement</p>
+    </div>
+  </section>
+        
         <%- include('fragmente/footer') %>
 
     </body>
