@@ -209,6 +209,8 @@
 
         </main>
 
+
+
                       <!-- VIDEO SECTION -->
   <section id="video-section" class="grid-zone">
     <h2>Quantum Entanglement Explained</h2>
@@ -217,7 +219,7 @@
       <video 
         controls
         poster="./resurse/video/quantum-video-poster.jpg"
-        preload="metadata"
+        preload="auto"
         class="responsive-video"
       >
         <!-- Surse video în formate diferite -->
@@ -245,8 +247,60 @@
       <p>Experiment of Quantum Entanglement</p>
     </div>
   </section>
+
+
+
+  <section id="stilizare-taburi" class="grid-zone">
+    <div class="container-iframe">
+        <div class="taburi-iframe">
+            <a href="https://www.youtube.com/embed/qJZ1Ez28C-A" target="ifr-video">Strange QM</a>
+            <a href="https://www.youtube.com/embed/Kv8N9alyYNc" target="ifr-video">Quantum Computing</a>
+            <a href="https://www.youtube.com/embed/dm6ux6d6kCA" target="ifr-video">Shor's Alghoritm</a>
+        </div>
+        <iframe name="ifr-video" width="560" height="315" src="https://www.youtube.com/embed/qtlhdIfojmc" 
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        </iframe>
+    </div>
+</section>
+
         
         <%- include('fragmente/footer') %>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+  // Toggle meniul principal
+  document.getElementById('hamburger-icon').addEventListener('click', function() {
+    document.getElementById('nav-menu').classList.toggle('active');
+  });
+
+  // Gestionare submeniuri
+  document.querySelectorAll('.has-submenu > a').forEach(item => {
+    item.addEventListener('click', function(e) {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        const parent = this.parentElement;
+        const wasOpen = parent.classList.contains('open');
+        
+        // Închide toate celelalte submeniuri
+        document.querySelectorAll('.has-submenu').forEach(el => {
+          if (el !== parent) {
+            el.classList.remove('open');
+            el.querySelector('.submenu').style.maxHeight = '0';
+          }
+        });
+        
+        // Deschide/închide submeniul curent
+        if (!wasOpen) {
+          parent.classList.add('open');
+          parent.querySelector('.submenu').style.maxHeight = '500px';
+        } else {
+          parent.classList.remove('open');
+          parent.querySelector('.submenu').style.maxHeight = '0';
+        }
+      }
+    });
+  });
+});
+</script>
 
     </body>
 </html>
