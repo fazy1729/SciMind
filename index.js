@@ -1,14 +1,28 @@
 const express = require("express");
 const path = require("path");
-const fs = require("fs");
+const fs = require("fs-extra");
 const sharp = require("sharp");
 const app = express();
+const sass = require('sass');
+
+const chokidar = require('chokidar'); // Pentru monitorizare mai bună a fișierelor
+
+
 global.obGlobal = {
     obErori: null
 };
 
-// Vectorul cu folderele necesare
-const vect_foldere = ["temp"]; // Poți adăuga "temp1" pentru testare
+
+// Adaugă în obiectul global
+global.obGlobal = {
+    obErori: null,
+    folderScss: path.join(__dirname, 'resurse/scss'),
+    folderCss: path.join(__dirname, 'resurse/css'),
+    folderBackup: path.join(__dirname, 'backup')
+};
+
+// Actualizează vectorul de foldere
+const vect_foldere = ["temp", "backup"];
 
 
 
@@ -40,12 +54,96 @@ function initFoldere() {
 }
 
 
+async function compileazaScss(caleScss, caleCss = null) {
+    try {
+        // Resolve paths
+        const inputPath = path.isAbsolute(caleScss) 
+            ? caleScss 
+            : path.join(global.obGlobal.folderScss, caleScss);
+        
+        const outputPath = caleCss 
+            ? (path.isAbsolute(caleCss) 
+                ? caleCss 
+                : path.join(global.obGlobal.folderCss, caleCss))
+            : path.join(
+                global.obGlobal.folderCss, 
+                path.basename(caleScss, '.scss') + '.css'
+            );
+
+        // Create backup folder structure
+        const backupDir = path.join(global.obGlobal.folderBackup, 'resurse', 'css');
+        const backupPath = path.join(backupDir, path.basename(outputPath));
+
+        await fs.ensureDir(backupDir);
+
+        // Backup existing CSS if exists
+        if (fs.existsSync(outputPath)) {
+            const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+            const backupFile = `${path.basename(outputPath, '.css')}_${timestamp}.css`;
+            await fs.copy(outputPath, path.join(backupDir, backupFile));
+            console.log(`Backup creat: ${backupFile}`);
+        }
+
+        // Compile SCSS
+        const result = sass.compile(inputPath, {
+            style: 'compressed',
+            loadPaths: [global.obGlobal.folderScss]
+        });
+
+        await fs.writeFile(outputPath, result.css);
+        console.log(`Fișier compilat: ${inputPath} -> ${outputPath}`);
+
+        return true;
+    } catch (err) {
+        console.error(`Eroare compilare SCSS: ${err.message}`);
+        return false;
+    }
+}
+
+async function initScss() {
+    try {
+        // Creează folderele necesare
+        await fs.ensureDir(global.obGlobal.folderScss);
+        await fs.ensureDir(global.obGlobal.folderCss);
+        await fs.ensureDir(global.obGlobal.folderBackup);
+
+        // Compilează fișierul principal pentru despre.ejs
+        await compileazaScss('despre.scss', 'despre.css');
+
+        // Monitorizare modificări
+        const watcher = chokidar.watch(global.obGlobal.folderScss, {
+            ignored: /(^|[\/\\])\../, // ignore dotfiles
+            persistent: true
+        });
+
+        watcher.on('change', async (path) => {
+            if (path.endsWith('despre.scss')) {
+                console.log(`Fișier modificat: ${path}`);
+                await compileazaScss('despre.scss', 'despre.css');
+            }
+        });
+
+        console.log('Monitorizare SCSS activă pentru despre.scss');
+    } catch (err) {
+        console.error('Eroare inițializare SCSS:', err);
+    }
+}
+
+
 // Configurare
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 initErori();
 initFoldere();
+initScss().then(() => {
+    app.listen(PORT, () => {
+        console.log(`
+        Serverul rulează pe portul ${PORT}
+        Accesează: http://localhost:${PORT}
+        `);
+    });
+});
 
 
 

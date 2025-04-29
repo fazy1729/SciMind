@@ -169,7 +169,7 @@ footer {
   min-height: 120px;
   background: linear-gradient(135deg, #D9B08C, #116466);
   border-radius: 10px;
-  margin-top: -175px !important;
+  margin-top:135px;
   margin-bottom : 0px !important
 }
 
@@ -577,40 +577,38 @@ img, video {
 
 
 
-/* STILIZARE IFRAME-URI */
 .container-iframe {
   display: flex;
-  align-items: flex-start;
+  align-items: flex-start; /* Aliniază elementele de sus */
   padding: 20px;
   position: relative;
-  flex-direction: column;
+  flex-direction: row; /* Aliniază iframe-ul și linkurile pe orizontală */
   gap: 20px;
 }
 
 .taburi-iframe {
   display: flex;
-  flex-direction: row; 
+  flex-direction: column;
   gap: 10px;
   padding: 10px;
-  width: 100%; 
   background-color: rgba(44, 53, 49, 0.8); 
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  margin-top: 20px; 
-  position: relative; 
+  position: relative;
+  padding-bottom: 30px;
 }
 
 .taburi-iframe a {
   display: block;
   padding: 12px 20px;
   background-color: #2C3531;
-  color: #FFCB9A; 
+  color: #FFCB9A;
   text-align: center;
   text-decoration: none;
   border: 2px solid #D9B08C; 
   border-radius: 5px;
   font-size: 1.1rem;
-  transition: all 0.3s ease;  
+  transition: all 0.3s ease;
 }
 
 .taburi-iframe a:hover {
@@ -619,10 +617,11 @@ img, video {
   transform: scale(1.05); 
 }
 
-
 iframe {
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 75%; /* Ajustează dimensiunea iframe-ului */
+  height: 400px; /* Sau dimensiunea dorită */
 }
 
 
@@ -837,7 +836,7 @@ msup mo {
 
 #video-section {
   transform: translateY(-135px); /* Mută secțiunea 50px în sus */
-  margin-bottom: 100px;
+  margin-bottom: 15px;
 }
 
 .responsive-video {

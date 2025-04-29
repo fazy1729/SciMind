@@ -1,0 +1,136 @@
+@use 'custom' as *;
+
+
+// resurse/scss/despre.scss
+$primary-color: #2c3e50;
+$secondary-color: #e73a3a;
+$accent-color: #3498db;
+$light-bg: #f8f9fa;
+$text-color: #333;
+$transition-speed: 0.3s;
+
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to bottom, $secondary-color, $accent-color);
+  }
+
+  h1 {
+    color: $primary-color;
+    position: relative;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(to right, $secondary-color, $accent-color);
+      border-radius: 2px;
+    }
+  }
+
+  section {
+    margin: 3rem 0;
+    padding: 1.5rem;
+    background: $light-bg;
+    border-radius: 8px;
+    transition: all $transition-speed ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: $secondary-color;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 50%;
+        height: 3px;
+        background: currentColor;
+        border-radius: 3px;
+      }
+    }
+    
+    p {
+      color: $text-color;
+      line-height: 1.8;
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      margin: 1.5rem 0;
+      transition: all $transition-speed ease;
+      filter: grayscale(20%);
+      
+      &:hover {
+        transform: scale(1.02);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+        filter: grayscale(0%);
+      }
+    }
+  }
+}
+
+/* Efect de fade-in pentru întreaga pagină */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+    margin: 1rem;
+    
+    h1 {
+      font-size: 2rem;
+    }
+    
+    section {
+      padding: 1rem;
+      
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
