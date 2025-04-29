@@ -120,13 +120,23 @@ function afisareEroare(res, identificator, titlu, text, imagine) {
     });
 }
 
-function getAnotimp() {
-    const month = new Date().getMonth() + 1;
-    if (month === 12 || month <= 2) return "iarna";
-    if (month <= 5) return "primavara";
-    if (month <= 8) return "vara";
-    return "toamna";
-}
+function getAnotimp(req) {
+    let dataTest;
+    if (req.query.data) {
+      dataTest = new Date(req.query.data);
+    } else {
+      dataTest = new Date(); // data reală
+    }
+  
+    const luna = dataTest.getMonth(); // 0-11
+  
+    if (luna >= 2 && luna <= 4) return "primavara";
+    if (luna >= 5 && luna <= 7) return "vara";
+    if (luna >= 8 && luna <= 10) return "toamna";
+    return "iarna";
+  }
+
+  
 
 
 // Încărcare date galerie cu verificare extinsă
@@ -155,7 +165,7 @@ try {
 // Ruta pentru galerie statica
 app.get("/pagini/galerie_statica", (req, res) => {
     try {
-        const anotimp = getAnotimp();
+        const anotimp = getAnotimp(req);
         const imagini = galerieData.imagini || [];
         
         // Filtrăm imaginile după anotimp și luăm primele 15
