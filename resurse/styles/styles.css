@@ -24,7 +24,6 @@ header {
   animation: gradientShift 10s ease infinite;
 }
 
-
 /* Animație pentru gradient */
 @keyframes gradientShift {
   0% {
@@ -93,71 +92,6 @@ h1 {
 /* Culoarea textului la hover */
 .main-menu a:hover {
   color: #ffcb9a;
-}
-
-
-.hamburger-menu {
-  width: 35px;
-  height: 25px;
-  position: relative;
-  cursor: pointer;
-  z-index: 10;
-}
-
-/* Remove duplicate burger menu styles and keep only this one: */
-
-.hamburger-menu {
-  display: none; /* Hidden by default */
-  width: 35px;
-  height: 25px;
-  position: relative;
-  cursor: pointer;
-  z-index: 1001;
-  margin-left: auto;
-  padding: 15px;
-}
-
-.hamburger-menu .bar {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background-color: #ffcb9a;
-  transition: all 0.3s ease;
-  border-radius: 3px;
-}
-
-.hamburger-menu .bar:nth-child(1) {
-  top: 0;
-}
-
-.hamburger-menu .bar:nth-child(2) {
-  top: 11px;
-}
-
-.hamburger-menu .bar:nth-child(3) {
-  bottom: 0;
-}
-
-.hamburger-menu.open .bar:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.hamburger-menu.open .bar:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger-menu.open .bar:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-
-/* Header adjustments */
-header {
-  position: relative; /* Add this */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
 }
 
 /* Submeniul */
@@ -235,207 +169,51 @@ header {
   top: -7px;
 }
 
-@media (max-width: 768px) {
-  .hamburger-menu {
-    display: block;
-    cursor: pointer;
-    position: fixed;
-    left: 20px;
-    top: 20px;
-    z-index: 1100;
-  }
-
-  /* Meniul principal - inițial ascuns */
-  /* Meniul principal - inițial ascuns și cu formă de poligon ascuțit */
-.main-menu {
-  position: fixed;
-  top: 80px;
-  left: -100%; /* Meniul este ascuns inițial */
-  width: 100%;
-  background: #116466;
-  flex-direction: column;
-  clip-path: polygon(0 100%, 100% 0, 100% 100%, 0 50%); /* Poligon ascuțit */
-  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  pointer-events: none;
-  z-index: 1000;
-  padding: 0;
-  margin: 0;
-  max-height: calc(100vh - 80px);
-  overflow-y: auto;
-}
-
-/* Meniul activ - se extinde într-un dreptunghi */
-.main-menu.active {
-  left: 0; /* Meniul vine pe ecran */
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Devine dreptunghi */
-  pointer-events: auto;
-}
-
-/* Elementele de meniu */
-.main-menu > ul > li {
-  width: 100%;
-  position: relative;
-}
-
-.main-menu > ul > li > a {
-  padding: 15px;
-  display: flex;
-  align-items: center;
-  color: #D9B08C;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(255, 203, 154, 0.1);
-}
-
-/* Submeniuri - soluție pentru suprapunere */
-.submenu {
-  background: #0d5254;
-  max-height: 1; /* Ascundem submeniul inițial */
-  overflow: hidden;
-  margin-top:175px;
-  transition: max-height 0.5s ease-out; /* Tranziție pentru deschidere */
-}
-
-/* Când submeniul este activ */
-.has-submenu.open .submenu {
-  max-height: 1px; /* Suficient de mare pentru a permite expansiunea */
-  transition: max-height 0.8s ease-in;
-}
-
-/* Indicator pentru submeniuri */
-.has-submenu > a::after {
-  content: "▼";
-  margin-left: auto;
-  font-size: 0.8rem;
-  transition: transform 0.3s ease;
-}
-
-.has-submenu.open > a::after {
-  transform: rotate(180deg); /* Rotește săgeata când submeniul este deschis */
-}
-
-}
-
-
-@media print {
-  /* Reset and basic styles */
-  * {
-    background: transparent !important;
-    color: black !important;
-    text-shadow: none !important;
-    box-shadow: none !important;
-  }
-
-  body {
-    margin: 0;
-    padding: 0;
-    font-size: 12pt;
-    line-height: 1.3;
-  }
-
-  /* Hide unnecessary elements */
-  img, video, iframe, figure, figcaption, .media-element,
-  .back-to-top, .skip-link, [class*="media"],
-  .hamburger-menu, .burger-menu {
-    display: none !important;
-  }
-
-  /* Banner styling */
-  .banner {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    width: 50%;
-    border: 3px double black !important;
-    padding: 10px;
-    font-size: 1.2rem;
-    text-align: center;
-    z-index: 100; /* Adjust z-index if needed */
-    margin: 0;
-    background: white !important;
-  }
-
-  /* Completely remove grid layout */
-  main, [class*="grid"], [class*="layout"], [id*="zona"], 
-  #zone1, #zona2, #zona3, #zona4, #zona5, #zona6, #zona7, #zona8,
-  #important-events {
-    display: block !important;
-    grid-template: none !important;
-    grid-area: unset !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    float: none !important;
-  }
-
-  /* Proper menu and submenu display */
+/* Responsive pentru Burger */
+@media screen and (max-width: 768px) {
   .main-menu {
-    display: block !important;
-    position: static !important;
-    transform: none !important;
-    background: none !important;
-    padding-left: 20px !important;
-    clip-path:none;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 10px;
+    align-items: center;
   }
-
-  /* Submenu styling */
+  .burger-menu.open + .main-menu {
+    display: block;
+  }
+  /* Submeniul cu efectul de clip-path - Săgeată */
   .submenu {
-    display: block !important;
-    position: static !important;
-    transform: none !important;
-    background: none !important;
-    padding-left: 30px !important;
-    margin-top: 5px !important;
-    margin-bottom: 15px !important;
-    border-left: 1px solid #ccc !important;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #116466;
+    padding: 0;
+    overflow: hidden;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* Săgeata */
+    transform: scale(0);
+    transform-origin: top left;
+    transition: transform 0.4s ease, clip-path 0.4s ease;
   }
-
-  /* Heading styling */
-  h1 {
-    text-align: center;
-    page-break-after: avoid;
-    font-size: 18pt !important;
-    color: black !important;
-    margin-top: 60px; /* Add margin to avoid overlap */
-    z-index: 1100; /* Ensure heading is above other content */
+  /* Submeniul devine vizibil */
+  .has-submenu.open .submenu {
+    display: block;
+    transform: scale(1);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* Săgeata devine vizibilă */
   }
-
-  /* Page breaks */
-  nav {
-    page-break-after: always;
+  /* Culoare de fundal la hover pentru submeniu */
+  .submenu li a {
+    padding: 12px;
+    display: block;
+    font-size: 1rem;
+    color: #D9B08C;
+    transition: all 0.3s ease-in-out;
   }
-
-  footer {
-    page-break-before: always;
-  }
-
-  /* Watermark - "Manea Florin" */
-  body::after {
-    content: "Manea\A Florin";
-    white-space: pre;
-    position: fixed;
-    width: 60%;
-    height: 10%;
-    top: 45%;
-    left: 20%;
-    text-align: center;
-    font-size: 3em;
-    color: rgba(0, 0, 0, 0.3);
-    z-index: -1; /* Ensure watermark is below all content */
-    pointer-events: none;
-  }
-
-  /* Margins for facing pages */
-  @page {
-    margin: 2cm;
-  }
-
-  @page :left {
-    margin-left: 2cm;
-    margin-right: 1cm;
-  }
-
-  @page :right {
-    margin-right: 2cm;
-    margin-left: 1cm;
+  .submenu li a:hover {
+    background: rgba(255, 203, 154, 0.2);
+    color: #ffcb9a;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Adăugarea umbrei pe text */
   }
 }
+
+/*# sourceMappingURL=styles.css.map */

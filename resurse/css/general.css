@@ -29,12 +29,6 @@
   --culoare-text-light: #f1f1f1;  /* Culoare text deschis (pentru fundaluri mai închise) */
 }
 
-* {
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
 
 @media (max-width: 1024px) {
   :root {
@@ -49,7 +43,6 @@
     --page-padding: 50px;
     --grid-gap: 15px;
     --border-radius: 8px;
-    
   }
 }
 
@@ -157,8 +150,6 @@ header {
   .main-menu {
       display: none;
       width: 100%;
-      padding-top: 100px;
-
   }
 
   /* Show the hamburger menu */
@@ -262,8 +253,6 @@ p {
 }
 
 /* ===== RESPONSIVE ADJUSTMENTS ===== */
-
-/* GRID MIC */
 @media (max-width: 1024px) {
   main {
     grid-template-areas: 
@@ -276,8 +265,6 @@ p {
       "zona7 ."
       "footer footer";
     grid-template-columns: 1fr 1fr;
-    padding-top: 100px;
-
   }
   
   #zona8 {
@@ -299,9 +286,6 @@ p {
       "zona8"
       "footer";
     grid-template-columns: 1fr;
-    padding-top: 100px;
-    width:100%;
-
   }
   
   .grid-zone {
@@ -311,11 +295,6 @@ p {
   h1 { font-size: 1.8rem; }
   h2 { font-size: 1.5rem; }
   h3 { font-size: 1.2rem; }
-
-  .grid-zone {
-    width: 100%;
-    box-sizing: border-box;
-  }
 }
 
 /* ===== SPECIAL ZONE TREATMENTS ===== */
@@ -341,6 +320,110 @@ footer a {
 }
 
 
+@media print {
+  /* Bannerul în dreapta-sus */
+  .banner {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 50%; /* Lățimea bannerului va fi jumătate din lățimea paginii */
+      border: 3px double black; /* Bordură dublă neagră */
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.8); /* Fundal alb transparent */
+      font-size: 1.2rem;
+      color: black;
+      text-align: center;
+      z-index: 100;
+  }
+
+  /* Ascunderea imaginilor, video-urilor, iframe-urilor și linkurilor */
+  img, video, iframe {
+      display: none !important;
+  }
+
+  .back-to-top {
+      display: none !important;
+  }
+
+  /* Meniul devine listă simplă (și submeniul devine vizibil) */
+  .main-menu {
+      list-style-type: none;
+      padding: 0;
+  }
+
+  .main-menu li {
+      margin-bottom: 10px;
+  }
+
+  .submenu {
+      list-style-type: none;
+      padding-left: 20px;
+  }
+
+  /* Toate linkurile din pagină devin text normal */
+  a {
+      text-decoration: none;
+      color: black;
+  }
+
+  /* Heading-ul și meniul sub formă de listă */
+  h1 {
+      text-align: center;
+  }
+
+  /* Submeniul va fi vizibil ca o listă neordonată */
+  .submenu {
+      display: block;
+      padding-left: 20px;
+  }
+
+  /* Break de pagină după meniu și înainte de footer */
+  .main-menu {
+      page-break-after: always;
+  }
+
+  footer {
+      page-break-before: always;
+  }
+
+  /* Watermark pe toate paginile */
+  @page {
+      size: auto;
+      margin: 2cm;
+      background: none;
+  }
+
+  /* Watermark în fundal pe toate paginile */
+  body {
+      position: relative;
+  }
+
+  body::before {
+      content: "Manea Florin"; /* Înlocuiește cu numele tău */
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 30px;
+      font-weight: bold;
+      color: black;
+      opacity: 0.3;
+      text-align: center;
+      z-index: -1;
+      pointer-events: none; /* Face watermark-ul să nu interfereze cu interacțiunile utilizatorului */
+  }
+
+  /* Setarea marginii paginii */
+  @page :left {
+      margin-left: 2cm;
+      margin-right: 1cm;
+  }
+
+  @page :right {
+      margin-left: 1cm;
+      margin-right: 2cm;
+  }
+}
 
 
 
@@ -353,7 +436,7 @@ img, video {
 
 
 
-/* STILIZARE TABEL */
+/* STILIZARE EVENIMENTE */
 #important-events {
   display: flex;
   justify-content: center; 
@@ -391,8 +474,6 @@ img, video {
   text-transform: uppercase;
   text-shadow: 0 0 15px #FFCB9A, 0 0 25px #FFCB9A, 0 0 35px #116466;
   animation: glowing-text 1.5s infinite alternate;
-  caption-side: bottom; /* <-- AICI il pui sub tabel */
-
 }
 
 @keyframes glowing-text {
@@ -425,6 +506,7 @@ img, video {
 }
 
 #important-events th:hover {
+  background-color: #116466;
   color: #D9B08C;
   box-shadow: 0 0 30px #D9B08C, 0 0 40px #FFCB9A;
 }
@@ -454,122 +536,97 @@ img, video {
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
 }
 
-
-.table-container {
-  width: 100%;
-  overflow-x: auto; /* Aici ne asigurăm că va apărea scrollbar-ul orizontal */
-}
-
-.table-container table {
-  min-width: 100px; /* sau orice valoare care să fie mai mare decât lățimea pe care o vrei */
-  width: 100%; /* Înălțimea se va adapta în funcție de conținut */
-  border-collapse: collapse;
-}
-
-
-/* Stilizare generală tabel */
-#stilizare-tabel {
-  width: 100%;
-}
-
-/* Responsivitate pentru ecrane sub 1200px */
-@media screen and (max-width: 1200px) {
-#important-events {
-  padding: 20px;
-  justify-content: center;
-}
-
-.table-container {
-  overflow-x: auto;
-  width: 100%;
-}
-
-#stilizare-tabel {
-  min-width: 600px; /* tabelul mai lat decât ecranul ca să apară scroll-ul */
-}
-
-#stilizare-tabel th, #stilizare-tabel td {
-  font-size: 1rem;
-}
-}
-
-/* Responsivitate pentru ecrane sub 768px */
+/* Responsivitate pentru ecrane mici */
 @media screen and (max-width: 768px) {
-#important-events {
-  padding: 20px;
-  justify-content: center;
+  #important-events {
+    padding: 20px;
+    justify-content: center; 
+  }
+
+  #important-events .table-container {
+    width: 100%; 
+    box-shadow: none;
+  }
+
+  #important-events th, #important-events td {
+    font-size: 1rem; 
+  }
 }
 
-.table-container {
-  overflow-x: auto;
-  width: 100%;
-}
 
-#stilizare-tabel {
-  min-width: 600px;
-}
+/* Responsivitate pentru ecrane mici */
+@media screen and (max-width: 768px) {
+  #top-physicists {
+    padding: 15px;
+    justify-content: center;
+    width: 100%;
+    max-width: none;
+    height: auto;
+  }
 
-#stilizare-tabel th, #stilizare-tabel td {
-  font-size: 0.9rem;
-  padding: 10px;
-}
+  #top-physicists table {
+    padding: 15px;
+  }
+
+  #top-physicists th, #top-physicists td {
+    font-size: 1rem;
+    padding: 12px;  /* Slightly reduced padding on smaller screens */
+  }
 }
 
 
 
 
 /* STILIZARE IFRAME-URI */
-#stilizare-taburi {
-  align-content: center;
-  transform: translateY(-153px); /* Mută secțiunea 50px în sus */
-  margin-bottom: 100px;
-  justify-content: center;
-
-  
-}
 .container-iframe {
-  justify-content: center;
   display: flex;
-  background: transparent;
-  margin: 40px auto;
-}
-
-/* Container pentru linkuri */
-.taburi-iframe {
-  
-  display: flex;
+  align-items: flex-start;
+  padding: 20px;
+  position: relative;
   flex-direction: column;
-  gap: 0; /* Fără spațiu între linkuri */
-  background: transparent;
+  gap: 20px;
 }
 
-/* Linkurile */
-.taburi-iframe a {
-  border: 2px solid #ccc; /* border doar pe video */
-
+.taburi-iframe {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100px;
-  height: 40px;
-  background-color: #f5a732;
-  color: #ffffff;
-  font-size: 13px;
-  font-weight: 600;
+  flex-direction: row; 
+  gap: 10px;
+  padding: 10px;
+  width: 100%; 
+  background-color: rgba(44, 53, 49, 0.8); 
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  margin-top: 20px; 
+  position: relative; 
+}
+
+.taburi-iframe a {
+  display: block;
+  padding: 12px 20px;
+  background-color: #2C3531;
+  color: #FFCB9A; 
+  text-align: center;
   text-decoration: none;
-  transition: all 0.3s ease;
+  border: 2px solid #D9B08C; 
+  border-radius: 5px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;  
 }
 
-/* Hover */
 .taburi-iframe a:hover {
-  background-color: #e0e0e0;
-  color: #0056b3;
+  background-color: #116466; 
+  color: #D9B08C; 
+  transform: scale(1.05); 
 }
 
-/* iframe-ul */
+
 iframe {
-  border: 2px solid #ccc; /* border doar pe video */
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
+
+
+
 /* INTOARCERE ACASA */
 
 /* TOP */
@@ -596,8 +653,6 @@ iframe {
 
 .back-to-top:hover {
   opacity: 1;
-
-
   box-shadow: var(--hover-box-shadow);
 }
 
@@ -616,18 +671,12 @@ iframe {
   /* 🔁 Aici e magia: curbura mai accentuată */
   border-radius: 100% / 100%;
   clip-path: inset(10% 0 10% 0 round 40px);
-  transition: opacity 0.4s ease, background-color 1s ease;
-
-
-
 
   box-shadow: var(--box-shadow);
-} 
-
-.shape:hover {
-  background-color: #FFCB9A;
-  opacity : 0.4;
 }
+
+
+
 
 /* Triunghiul */
 .back-to-top .triangle {
@@ -709,7 +758,6 @@ iframe {
 
 @media (max-width: 768px) {
   #zone1 h1 {
-    padding-top: 100px;
     font-size: 2.5rem; 
   }
 
@@ -873,10 +921,5 @@ main a {
 }
 
 main a:hover {
-  background-size: 100% 80%; /* Lățime 100%, înălțime 80% la hover */
-}
-
-main a:active {
-  border: 1px solid var(--culoare-text);
-  outline: none;
+  background-size: 100% 80%; /* Lățime 100%, înălțime 150% la hover */
 }

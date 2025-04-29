@@ -1,0 +1,110 @@
+<style>
+  /* Galerie Grid */
+  .galerie-statica {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, auto);
+    gap: 15px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+  }
+
+  .galerie-item {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    height: 100%;
+  }
+
+    .galerie-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: all 0.125s ease; /* Adaugă tranziția */
+    transform-origin: top center; /* Punctul de scalare */
+  }
+
+  .galerie-item figcaption {
+    padding: 10px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: translateY(100%);
+    transition: transform 0.25s ease;
+  }
+
+  .galerie-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  }
+
+  .galerie-item:hover figcaption {
+    transform: translateY(0);
+  }
+
+  /* Hover pe imagine */
+  .galerie-item:hover img {
+    transform: scale(1.4);     /* Scalare 40% */
+    opacity: 0.5;              /* Semi-transparent */
+    border-radius: 15px;       /* Colțuri mai rotunjite */
+  }
+
+  .index-roman {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .galerie-statica {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .galerie-statica {
+      background-color:pink;
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
+
+<div class="galerie-statica" id="galerie-statica">
+  <% if (typeof imagini !== 'undefined' && imagini.length) { %>
+    <% for (let i = 0; i < imagini.length; i++) { 
+         const imagine = imagini[i]; %>
+      <figure class="galerie-item">
+        <picture>
+          <% 
+            const fileParts = imagine.cale_fisier.split('.');
+            const baseName = fileParts.slice(0, -1).join('.');
+            const ext = fileParts.pop();
+          %>
+          <source media="(max-width: 600px)" srcset="<%= caleGalerie %>/<%= baseName %>-small.<%= ext %>">
+          <img 
+            src="<%= caleGalerie %>/<%= imagine.cale_fisier %>" 
+            alt="<%= imagine.alt || imagine.titlu || 'Imagine galerie' %>" 
+            title="<%= imagine.text_descriere || '' %>"
+            loading="lazy"
+          >
+        </picture>
+        <figcaption>
+          <span class="index-roman"><%= i + 1 %>.</span> 
+          <%= imagine.titlu || 'Imagine fără titlu' %>
+        </figcaption>
+      </figure>
+    <% } %>
+  <% } else { %>
+    <p class="eroare-galerie">Nu există imagini disponibile pentru anotimpul <%= anotimpCurent %>.</p>
+  <% } %>
+</div>

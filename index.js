@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
+const sharp = require("sharp");
 const app = express();
 global.obGlobal = {
     obErori: null
@@ -8,6 +9,7 @@ global.obGlobal = {
 
 // Vectorul cu folderele necesare
 const vect_foldere = ["temp"]; // Poți adăuga "temp1" pentru testare
+
 
 
 function initErori() {
@@ -92,6 +94,11 @@ app.get("/favicon.ico", (req, res) => {
     res.sendFile(path.join(__dirname, "resurse/ico/favicon.ico"));
 });
 
+
+app.use('/resurse', express.static('resurse'));
+
+
+
 // Funcție pentru a afisa eroarea corespunzătoare
 function afisareEroare(res, identificator, titlu, text, imagine) {
     const erori = obGlobal.obErori;
@@ -112,6 +119,63 @@ function afisareEroare(res, identificator, titlu, text, imagine) {
         imagine: imagine || eroare.imagine
     });
 }
+
+function getAnotimp() {
+    const month = new Date().getMonth() + 1;
+    if (month === 12 || month <= 2) return "iarna";
+    if (month <= 5) return "primavara";
+    if (month <= 8) return "vara";
+    return "toamna";
+}
+
+
+// Încărcare date galerie cu verificare extinsă
+let galerieData = { imagini: [], cale_galerie: "/resurse/imagini/galerie" };
+
+try {
+    const galeriePath = path.join(__dirname, "galerie.json");
+    if (fs.existsSync(galeriePath)) {
+        const rawData = fs.readFileSync(galeriePath, 'utf8');
+        const parsedData = JSON.parse(rawData);
+
+        // Validare structură date
+        if (parsedData.imagini && Array.isArray(parsedData.imagini)) {
+            galerieData = {
+                imagini: parsedData.imagini,
+                cale_galerie: parsedData.cale_galerie || "/resurse/imagini/galerie"
+            };
+        }
+    } else {
+        console.warn("Fișierul galerie.json nu există în directorul date/");
+    }
+} catch (err) {
+    console.error("Eroare la încărcarea galeriei:", err);
+}
+
+// Ruta pentru galerie statica
+app.get("/pagini/galerie_statica", (req, res) => {
+    try {
+        const anotimp = getAnotimp();
+        const imagini = galerieData.imagini || [];
+        
+        // Filtrăm imaginile după anotimp și luăm primele 15
+        const imaginiFiltrate = imagini
+            .filter(img => img && img.anotimp === anotimp)
+            .slice(0, 15); // 5 rânduri x 3 coloane = 15 imagini
+
+        res.render("pagini/galerie_statica", {
+            titlu: "Galerie Statică (5x3)",
+            imagini: imaginiFiltrate,
+            anotimpCurent: anotimp,
+            caleGalerie: galerieData.cale_galerie
+        });
+    } catch (err) {
+        console.error("Eroare la afișarea galeriei:", err);
+        afisareEroare(res, 500);
+    }
+});
+
+
 
 
 
@@ -135,6 +199,9 @@ app.get("/pagini/:numePagina", (req, res) => {
         }
     });
 });
+
+
+
 
 
 // Pornire server
