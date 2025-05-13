@@ -1,0 +1,51 @@
+@media screen and (max-width: 1200px) {
+  .container-galerie-animata {
+    display: none !important;
+  }
+}
+.container-galerie-animata {
+  width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.galerie-animata {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 15px solid transparent;
+  border-image: url("/resurse/imagini/border-image.jpg") 30 round;
+  --numar-imagini: 4;
+}
+.galerie-animata .imagine-galerie {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transition: opacity 1s ease, clip-path 2s ease;
+  clip-path: circle(0% at 50% 50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.galerie-animata .imagine-galerie img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@keyframes animatie-galerie {
+  0% {
+    clip-path: circle(100% at 50% 50%);
+  }
+  100% {
+    clip-path: circle(0% at 50% 50%);
+  }
+}
+
+/*# sourceMappingURL=galerie_animata.css.map */

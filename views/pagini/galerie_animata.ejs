@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <%- include('../fragmente/head.ejs') %>
+    <link rel="stylesheet" href="/resurse/css/galerie_dinamica.css">
+  </head>
+
+  <body>
+    <%- include('../fragmente/header.ejs') %>
+
+    <div class="container-galerie-dinamica">
+      <div class="galerie-dinamica" id="galerie-dinamica">
+        <!-- Imagini vor fi adăugate dinamic prin JavaScript -->
+      </div>
+    </div>
+
+    <%- include('../fragmente/footer.ejs') %>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+  // Obținem numărul aleator de imagini (putere a lui 2 între 2 și 16)
+  const numarImagini = Math.pow(2, Math.floor(Math.random() * 4) + 1); // aleator între 2 și 16
+
+  // Obținem imaginile din datele primite de la server (indice par)
+  const imaginiDisponibile = <%- JSON.stringify(imagini) %>.filter((_, index) => index % 2 === 0);
+  const imaginiSelectate = imaginiDisponibile.slice(0, numarImagini);
+
+  // Adăugăm imaginile în galerie
+  const galerie = document.getElementById('galerie-dinamica');
+  galerie.style.setProperty('--numar-imagini', numarImagini);
+
+  imaginiSelectate.forEach(imagine => {
+    const element = document.createElement('div');
+    element.className = 'imagine-galerie';
+    element.innerHTML = `
+      <img src="<%= caleGalerie %>/${imagine.cale_fisier}" 
+           alt="${imagine.alt || imagine.titlu || 'Imagine galerie'}" 
+           loading="lazy">
+    `;
+    galerie.appendChild(element);
+  });
+
+  // Animăm galeria
+  let indexCurent = 0;
+  let intervalId;
+  let timeoutId;
+
+  function animareGalerie() {
+    const imagini = document.querySelectorAll('.imagine-galerie');
+
+    // Ascundem toate imaginile
+    imagini.forEach(img => {
+      img.style.clipPath = 'circle(0% at 50% 50%)'; // Asigură-te că nu afectează poziția imaginii
+    });
+
+    // Afișăm imaginea curentă
+    imagini[indexCurent].style.clipPath = 'circle(100% at 50% 50%)'; // Împingem imaginea din centru
+
+    // Animație de dispariție
+    let radius = 100;
+    const animatie = () => {
+      radius -= 2;
+      imagini[indexCurent].style.clipPath = `circle(${radius}% at 50% 50%)`;
+
+      if (radius > 0) {
+        timeoutId = setTimeout(animatie, 20); // Întârziere de 20ms pentru o tranziție mai lentă
+      } else {
+        indexCurent = (indexCurent + 1) % imagini.length;
+        timeoutId = setTimeout(animareGalerie, 1000); // Pauză între imagini
+      }
+    };
+
+    timeoutId = setTimeout(animatie, 10); // Timp de afișare inițial
+  }
+
+  // Pornim animația
+  function startAnimatie() {
+    clearInterval(intervalId);
+    clearTimeout(timeoutId);
+    animareGalerie();
+  }
+
+  // Oprim animația când mouse-ul este pe galerie
+  galerie.addEventListener('mouseenter', () => {
+    clearInterval(intervalId);
+    clearTimeout(timeoutId);
+  });
+
+  galerie.addEventListener('mouseleave', startAnimatie);
+
+  startAnimatie();
+});
+
+    </script>
+  </body>
+</html>

@@ -284,6 +284,30 @@ app.get("/pagini/galerie_statica", (req, res) => {
 });
 
 
+app.get("/pagini/galerie_animata", (req, res) => {
+    try {
+        // Încarcă datele din JSON folosind calea corectă
+        const galerieData = require('./galerie.json');
+        
+        // Obținem toate imaginile din JSON
+        const imagini = galerieData.imagini || [];
+
+        // Trimite datele la template-ul EJS
+        res.render("pagini/galerie_animata.ejs", {
+            titlu: "Galerie Dinamică",
+            imagini: imagini,
+            caleGalerie: galerieData.cale_galerie || '/resurse/imagini'
+        });
+    } catch (err) {
+        console.error("Eroare la afișarea galeriei:", err);
+        res.status(500).send("Eroare la încărcarea galeriei");
+    }
+});
+
+
+
+
+
 
 
 
@@ -296,6 +320,8 @@ app.get("/pagini/:numePagina", (req, res) => {
     
     // Verificăm dacă fișierul există
     const caleFisier = path.join(__dirname, 'views', caleView + '.ejs');
+
+    
     
     fs.access(caleFisier, fs.constants.F_OK, (err) => {
         if (err) {
@@ -307,6 +333,11 @@ app.get("/pagini/:numePagina", (req, res) => {
         }
     });
 });
+
+
+console.log('__dirname:', __dirname);
+console.log('__filename:', __filename);
+console.log('process.cwd():', process.cwd());
 
 
 

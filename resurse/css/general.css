@@ -922,3 +922,113 @@ main a {
 main a:hover {
   background-size: 100% 80%; /* Lățime 100%, înălțime 150% la hover */
 }
+
+main a:active {
+  border : 1px solid var(--content-bg);
+  outline : none;
+}
+
+
+/* REFLEXIE TEXT */
+#text-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  right:115px;
+  top:25px;
+}
+
+#text, #text-reflectat {
+  font-size: 50px;
+  line-height: 50px;
+  font-weight: bold;
+  transition: background-image 2s ease, color 0.3s ease; /* Combinație de tranziții pentru color și background-image */
+}
+
+#text {
+  position: relative;
+  color: black;
+  transform: scaleX(1) skewY(-15deg);
+  bottom: 10px;
+  -webkit-background-clip: text; /* Aplica gradientul doar pe text */
+  background-clip: text; /* Pentru a fi compatibil cu alte browsere */
+  background-image: none; /* Fără gradient inițial */ 
+}
+
+#text-reflectat {
+  position: absolute;
+  left: 110%; /* Reflexia va fi la dreapta textului original */
+  top: 0;
+  color: black;
+  transform-origin: left top;
+  transform: scaleX(1) skewY(18deg) rotateX(180deg); /* Oglindirea pe axa Y */
+  -webkit-background-clip: text; /* Aplica gradientul doar pe text */
+  background-clip: text; /* Pentru a fi compatibil cu alte browsere */
+  background-image: none; /* Fără gradient inițial */
+  opacity: 1; /* Reflexia este transparentă */
+}
+
+#text-container:hover #text {
+  background-image: linear-gradient(to right, #ff7f50, #ff6347, #dc143c); /* Gradientul aplicat pe text */
+  color: transparent; /* Textul devine transparent pentru a lăsa gradientul să se vadă */
+}
+
+#text-container:hover #text-reflectat {
+  color: transparent; /* Reflexia rămâne transparentă pentru a lăsa gradientul să se aplice */
+  background-image: linear-gradient(to right, #ff7f50, #ff6347, #dc143c); /* Gradientul aplicat pe text */
+
+}
+
+
+/* DUOTONE */ 
+/* Stil pentru containerul imaginii */
+.science-media {
+  position: relative;
+  display: inline-block;
+  width: 100%; /* Ajustează la dimensiunea dorită */
+  height: auto;
+  overflow: hidden; /* Asigură că imaginea nu iese din container */
+}
+
+/* Imaginea ca fundal */
+.science-media .responsive-img {
+  width: 100%;
+  height: 100%; /* Asigură că imaginea acoperă complet containerul */
+  object-fit: cover; /* Asigură că imaginea este bine redimensionată */
+  display: block;
+  transition: filter 2s ease, opacity 2s ease; /* Tranziție lină pentru grayscale */
+}
+
+/* Pseudoelementele pentru efectul duotone */
+.science-media::before,
+.science-media::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  mix-blend-mode: multiply; /* Amestecă culorile cu imaginea */
+  pointer-events: none; /* Să nu interfereze cu hover-ul */
+  transition: background-color 2s ease; /* Tranziție lină pentru culori */
+}
+
+.science-media::before {
+  background-color: #ff6347; /* Culoare 1 - roșu */
+}
+
+.science-media::after {
+  background-color: #1e90ff; /* Culoare 2 - albastru */
+  mix-blend-mode: overlay; /* Amestecă culoarea cu imaginea */
+}
+
+/* Efectul de schimbare la hover (grayscale) */
+.science-media:hover .responsive-img {
+  filter: grayscale(100%); /* Schimbă imaginea în grayscale la hover */
+}
+
+.science-media:hover::before,
+.science-media:hover::after {
+  background-color: transparent; /* Eliminăm culorile la hover */
+}

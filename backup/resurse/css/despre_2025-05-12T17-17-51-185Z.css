@@ -1,0 +1,37 @@
+.container{max-width:1200px;margin:2rem auto;padding:2rem;background:#fff;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.08);position:relative;overflow:hidden}.container::before{content:"";position:absolute;top:0;left:0;width:5px;height:100%;background:linear-gradient(to bottom, #e73a3a, #3498db)}.container h1{color:#2c3e50;position:relative;padding-bottom:1rem;margin-bottom:2rem;font-size:2.5rem;font-weight:700}.container h1::after{content:"";position:absolute;bottom:0;left:0;width:80px;height:4px;background:linear-gradient(to right, #e73a3a, #3498db);border-radius:2px}.container section{margin:3rem 0;padding:1.5rem;background:#f8f9fa;border-radius:8px;transition:all .3s ease}.container section:hover{transform:translateY(-5px);box-shadow:0 8px 20px rgba(0,0,0,.1)}.container section h2{color:#e73a3a;font-size:1.8rem;margin-bottom:1.5rem;position:relative;display:inline-block}.container section h2::after{content:"";position:absolute;bottom:-8px;left:0;width:50%;height:3px;background:currentColor;border-radius:3px}.container section p{color:#333;line-height:1.8;font-size:1.1rem;margin-bottom:1.5rem}.container section img{max-width:100%;height:auto;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,.15);margin:1.5rem 0;transition:all .3s ease;filter:grayscale(20%)}.container section img:hover{transform:scale(1.02);box-shadow:0 12px 25px rgba(0,0,0,.2);filter:grayscale(0%)}@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}.container{animation:fadeIn .6s ease-out forwards}@media(max-width: 768px){.container{padding:1.5rem;margin:1rem}.container h1{font-size:2rem}.container section{padding:1rem}.container section h2{font-size:1.5rem}
+.reflexie-container {
+  position: relative;
+  display: inline-block;
+}
+
+#text,
+#text-reflectat {
+  font-size: 50px;
+  line-height: 50px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  color: #0080ff; /* Asortează cu .container h1 */
+}
+
+#text {
+  position: relative;
+}
+
+#text-reflectat {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  transform-origin: left top;
+  transform: scaleX(-1) skewY(-10deg) scaleY(0.9) translateX(10px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Hover pe container reflexie */
+.reflexie-container:hover #text,
+.reflexie-container:hover #text-reflectat {
+  color: #e73a3a;
+}
+
+
+}
