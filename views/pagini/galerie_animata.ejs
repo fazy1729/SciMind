@@ -18,79 +18,72 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-  // Obținem numărul aleator de imagini (putere a lui 2 între 2 și 16)
-  const numarImagini = Math.pow(2, Math.floor(Math.random() * 4) + 1); // aleator între 2 și 16
+        // Obținem numărul aleator de imagini (putere a lui 2 între 2 și 16)
+        const numarImagini = Math.pow(2, Math.floor(Math.random() * 4) + 1); // aleator între 2 și 16
 
-  // Obținem imaginile din datele primite de la server (indice par)
-  const imaginiDisponibile = <%- JSON.stringify(imagini) %>.filter((_, index) => index % 2 === 0);
-  const imaginiSelectate = imaginiDisponibile.slice(0, numarImagini);
+        // Obținem imaginile din datele primite de la server (indice par)
+        const imaginiDisponibile = <%- JSON.stringify(imagini) %>.filter((_, index) => index % 2 === 0);
+        const imaginiSelectate = imaginiDisponibile.slice(0, numarImagini);
 
-  // Adăugăm imaginile în galerie
-  const galerie = document.getElementById('galerie-dinamica');
-  galerie.style.setProperty('--numar-imagini', numarImagini);
+        // Adăugăm imaginile în galerie
+        const galerie = document.getElementById('galerie-dinamica');
+        galerie.style.setProperty('--numar-imagini', numarImagini);
 
-  imaginiSelectate.forEach(imagine => {
-    const element = document.createElement('div');
-    element.className = 'imagine-galerie';
-    element.innerHTML = `
-      <img src="<%= caleGalerie %>/${imagine.cale_fisier}" 
-           alt="${imagine.alt || imagine.titlu || 'Imagine galerie'}" 
-           loading="lazy">
-    `;
-    galerie.appendChild(element);
-  });
+        imaginiSelectate.forEach(imagine => {
+          const element = document.createElement('div');
+          element.className = 'imagine-galerie';
+          element.innerHTML = `
+            <img src="<%= caleGalerie %>/${imagine.cale_fisier}" 
+                 alt="${imagine.alt || imagine.titlu || 'Imagine galerie'}" 
+                 loading="lazy">
+          `;
+          galerie.appendChild(element);
+        });
 
-  // Animăm galeria
-  let indexCurent = 0;
-  let intervalId;
-  let timeoutId;
+        // Animăm galeria
+        let indexCurent = 0;
+        let timeoutId;
 
-  function animareGalerie() {
-    const imagini = document.querySelectorAll('.imagine-galerie');
+        function animareGalerie() {
+          const imagini = document.querySelectorAll('.imagine-galerie');
 
-    // Ascundem toate imaginile
-    imagini.forEach(img => {
-      img.style.clipPath = 'circle(0% at 50% 50%)'; // Asigură-te că nu afectează poziția imaginii
-    });
+          // Ascundem toate imaginile
+          imagini.forEach(img => {
+            img.style.opacity = '0';
+            img.style.clipPath = 'circle(0% at 50% 50%)';
+          });
 
-    // Afișăm imaginea curentă
-    imagini[indexCurent].style.clipPath = 'circle(100% at 50% 50%)'; // Împingem imaginea din centru
+          // Afișăm imaginea curentă
+          imagini[indexCurent].style.opacity = '1';
+          imagini[indexCurent].style.clipPath = 'circle(100% at 50% 50%)';
 
-    // Animație de dispariție
-    let radius = 100;
-    const animatie = () => {
-      radius -= 2;
-      imagini[indexCurent].style.clipPath = `circle(${radius}% at 50% 50%)`;
+          // Animație de dispariție după o pauză
+          timeoutId = setTimeout(() => {
+            imagini[indexCurent].style.clipPath = 'circle(0% at 50% 50%)';
+            
+            // Trecem la următoarea imagine după ce animația se termină
+            timeoutId = setTimeout(() => {
+              indexCurent = (indexCurent + 1) % imagini.length;
+              animareGalerie();
+            }, 700); // Timp pentru animație
+          }, 1500); // Timp de afișare
+        }
 
-      if (radius > 0) {
-        timeoutId = setTimeout(animatie, 20); // Întârziere de 20ms pentru o tranziție mai lentă
-      } else {
-        indexCurent = (indexCurent + 1) % imagini.length;
-        timeoutId = setTimeout(animareGalerie, 1000); // Pauză între imagini
-      }
-    };
+        // Pornim animația
+        function startAnimatie() {
+          clearTimeout(timeoutId);
+          animareGalerie();
+        }
 
-    timeoutId = setTimeout(animatie, 10); // Timp de afișare inițial
-  }
+        // Oprim animația când mouse-ul este pe galerie
+        galerie.addEventListener('mouseenter', () => {
+          clearTimeout(timeoutId);
+        });
 
-  // Pornim animația
-  function startAnimatie() {
-    clearInterval(intervalId);
-    clearTimeout(timeoutId);
-    animareGalerie();
-  }
+        galerie.addEventListener('mouseleave', startAnimatie);
 
-  // Oprim animația când mouse-ul este pe galerie
-  galerie.addEventListener('mouseenter', () => {
-    clearInterval(intervalId);
-    clearTimeout(timeoutId);
-  });
-
-  galerie.addEventListener('mouseleave', startAnimatie);
-
-  startAnimatie();
-});
-
+        startAnimatie();
+      });
     </script>
   </body>
 </html>
