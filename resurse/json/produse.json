@@ -1,0 +1,39 @@
+{
+  "produse": [
+    {
+      "id": "quantum-microscope",
+      "nume": "Microscop Quantum",
+      "descriere": "Microscop avansat pentru cercetări cuantice",
+      "descriere_lunga": "Acest microscop cuantic de ultimă generație permite observarea fenomenelor la nivel subatomic. Folosește tehnologia de entanglement cuantic pentru a oferi rezoluție fără precedent.",
+      "pret": 12500,
+      "pret_redus": 11250,
+      "imagine": "microscop-cuantic.jpg",
+      "imagini_aditionale": ["microscop-1.jpg", "microscop-2.jpg", "microscop-3.jpg"],
+      "specificatii": {
+        "Tehnologie": "Entanglement cuantic",
+        "Rezoluție": "0.1nm",
+        "Dimensiuni": "45×35×25 cm",
+        "Greutate": "12 kg",
+        "Alimentare": "220V"
+      },
+      "categorie": "echipamente-cuantice",
+      "stoc": 5
+    },
+    {
+      "id": "ai-processor",
+      "nume": "NeuroChip AI",
+      "descriere": "Procesor dedicat inteligenței artificiale",
+      "descriere_lunga": "NeuroChip este primul procesor din lume proiectat special pentru rețele neuronale, oferind performanțe de până la 100 TOPS cu consum energetic redus.",
+      "pret": 8900,
+      "imagine": "neurochip.jpg",
+      "specificatii": {
+        "Arhitectură": "Neural Processing Unit",
+        "Performanță": "100 TOPS",
+        "Consum": "25W",
+        "Interfață": "PCIe 4.0"
+      },
+      "categorie": "hardware-ai",
+      "stoc": 12
+    }
+  ]
+}

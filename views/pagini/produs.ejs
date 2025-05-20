@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<%- include('../fragmente/head', {titlu: titlu}) %>
+
+<html lang="ro">
+<body>
+    <%- include('../fragmente/header') %>
+    
+    <main>
+        <section id="zona-produs">
+            <div class="produs-container">
+                <div class="produs-grid">
+                    <!-- Coloana imaginilor -->
+                    <div class="produs-galeria">
+                        <div class="imagine-principala">
+                            <img src="<%= caleImagini %>/<%= produs.imagine %>" 
+                                 alt="<%= produs.nume %>" 
+                                 id="imagineProdus">
+                        </div>
+                        <% if (produs.imagini_aditionale && produs.imagini_aditionale.length) { %>
+                            <div class="thumbnail-container">
+                                <% produs.imagini_aditionale.forEach((imagine, index) => { %>
+                                    <div class="thumbnail" onclick="schimbaImagine('<%= caleImagini %>/<%= imagine %>')">
+                                        <img src="<%= caleImagini %>/<%= imagine %>" 
+                                             alt="<%= produs.nume %> - Imagine <%= index + 1 %>">
+                                    </div>
+                                <% }); %>
+                            </div>
+                        <% } %>
+                    </div>
+                    
+                    <!-- Coloana informațiilor -->
+                    <div class="produs-informatii">
+                        <h1 class="produs-titlu"><%= produs.nume %></h1>
+                        
+                        <div class="produs-pret">
+                            <% if (produs.pret_redus) { %>
+                                <span class="pret-vechi"><%= produs.pret.toFixed(2) %> lei</span>
+                                <span class="pret-nou"><%= produs.pret_redus.toFixed(2) %> lei</span>
+                                <span class="reducere">(-<%= Math.round((1 - produs.pret_redus/produs.pret)*100) %>%)</span>
+                            <% } else { %>
+                                <span class="pret-normal"><%= produs.pret.toFixed(2) %> lei</span>
+                            <% } %>
+                        </div>
+                        
+                        <div class="produs-stoc">
+                            <% if (produs.stoc > 0) { %>
+                                <span class="in-stoc">În stoc (<%= produs.stoc %> bucăți)</span>
+                            <% } else { %>
+                                <span class="stoc-epuizat">Stoc epuizat</span>
+                            <% } %>
+                        </div>
+                        
+                        <div class="produs-actiuni">
+                            <button class="buton-primar">Adaugă în coș</button>
+                            <button class="buton-secundar">Adaugă la favorite</button>
+                        </div>
+                        
+                        <div class="produs-descriere">
+                            <h3>Descriere produs</h3>
+                            <p><%= produs.descriere_lunga || produs.descriere %></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Specificații tehnice -->
+                <% if (produs.specificatii) { %>
+                    <div class="produs-specs">
+                        <h2>Specificații tehnice</h2>
+                        <div class="specificatii-grid">
+                            <% Object.entries(produs.specificatii).forEach(([key, value]) => { %>
+                                <div class="spec-item">
+                                    <span class="spec-cheie"><%= key %></span>
+                                    <span class="spec-valoare"><%= value %></span>
+                                </div>
+                            <% }); %>
+                        </div>
+                    </div>
+                <% } %>
+                
+                <!-- Recenzii (optional) -->
+                <div class="produs-recenzii">
+                    <h2>Recenzii</h2>
+                    <p>Acest produs nu are încă recenzii.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('../fragmente/footer') %>
+    
+    <link rel="stylesheet" href="/resurse/css/produs.css">
+    
+    <script>
+        // Funcție pentru schimbarea imaginii principale
+        function schimbaImagine(nouaSursa) {
+            document.getElementById('imagineProdus').src = nouaSursa;
+        }
+        
+        // Animatie butoane
+        document.querySelectorAll('.buton-primar, .buton-secundar').forEach(buton => {
+            buton.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>

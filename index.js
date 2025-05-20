@@ -25,6 +25,9 @@ global.obGlobal = {
 const vect_foldere = ["temp", "backup"];
 
 
+const produseRouter = require('./routes/produse');
+app.use('/produs', produseRouter);
+
 
 function initErori() {
     const eroriRaw = fs.readFileSync("erori.json");

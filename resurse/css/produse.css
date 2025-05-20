@@ -1,0 +1,373 @@
+/* Stiluri principale bazate pe tema ta */
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 8rem; /* îl mută vizual mai jos */
+    min-height: 100vh;
+    background-color: #2A2A2E;
+}
+
+.produs-container {
+    max-width: 2000px;
+    width: 100%;
+    margin: 6rem auto 2rem auto; /* Aici e cheia – 6rem sus */
+    padding: 2.5rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1E1E22;
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+.produs-container:hover {
+    box-shadow: var(--hover-box-shadow);
+}
+
+.produs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    width: 100%;
+}
+
+/* Galerie imagini */
+.produs-galeria {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.imagine-principala {
+    border: var(--border-width) solid var(--border-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.imagine-principala:hover {
+    transform: scale(1.02);
+}
+
+.imagine-principala img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    mix-blend-mode: luminosity;
+}
+
+.thumbnail-container {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+    width: 100%;
+    justify-content: center;
+}
+
+.thumbnail {
+    width: 90px;
+    height: 90px;
+    border: var(--border-width) solid var(--border-color);
+    border-radius: calc(var(--border-radius) / 2);
+    cursor: pointer;
+    overflow: hidden;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.thumbnail:hover {
+    border-color: var(--culoare-hover);
+    transform: translateY(-5px);
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Informatii produs */
+.produs-informatii {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.produs-titlu {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--culoare-text-light);
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.produs-pret {
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.pret-vechi {
+    text-decoration: line-through;
+    color: var(--culoare-secundara);
+    opacity: 0.8;
+}
+
+.pret-nou {
+    color: var(--culoare-text-light);
+    font-weight: 700;
+    background-color: var(--culoare-principala);
+    padding: 0.3rem 1rem;
+    border-radius: var(--border-radius);
+}
+
+.reducere {
+    background-color: var(--culoare-secundara);
+    color: var(--culoare-text-light);
+    padding: 0.3rem 1rem;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.pret-normal {
+    font-weight: 700;
+    color: var(--culoare-text-light);
+    background-color: var(--culoare-principala);
+    padding: 0.3rem 1rem;
+    border-radius: var(--border-radius);
+}
+
+.produs-stoc {
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.in-stoc {
+    color: #4CAF50;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    background-color: rgba(76, 175, 80, 0.2);
+    border-radius: var(--border-radius);
+    display: inline-block;
+}
+
+.stoc-epuizat {
+    color: #F44336;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    background-color: rgba(244, 67, 54, 0.2);
+    border-radius: var(--border-radius);
+    display: inline-block;
+}
+
+.produs-actiuni {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.buton-primar {
+    background-color: var(--culoare-principala);
+    color: var(--culoare-text-light);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+}
+
+.buton-primar:hover {
+    background-color: var(--culoare-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.buton-secundar {
+    background-color: transparent;
+    color: var(--culoare-text-light);
+    border: var(--border-width) solid var(--culoare-hover);
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 200px;
+}
+
+.buton-secundar:hover {
+    background-color: rgba(217, 176, 140, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.produs-descriere {
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    text-align: center;
+    font-size: 1.1rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--culoare-hover);
+}
+
+.produs-descriere h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--culoare-text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Specificatii tehnice */
+.produs-specs {
+    margin-bottom: 3rem;
+    width: 100%;
+}
+
+.produs-specs h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: var(--culoare-text-light);
+    text-align: center;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.produs-specs h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background-color: var(--culoare-hover);
+}
+
+.specificatii-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    justify-items: center;
+}
+
+.spec-item {
+    border-bottom: var(--border-width) solid var(--border-color);
+    padding: 1.5rem;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+}
+
+.spec-item:hover {
+    background-color: rgba(217, 176, 140, 0.1);
+    transform: translateY(-5px);
+}
+
+.spec-cheie {
+    display: block;
+    font-weight: 600;
+    color: var(--culoare-hover);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.spec-valoare {
+    color: var(--culoare-text-light);
+    font-size: 1rem;
+}
+
+/* Recenzii */
+.produs-recenzii {
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: var(--border-radius);
+    width: 100%;
+    text-align: center;
+    border-top: 4px solid var(--culoare-hover);
+}
+
+.produs-recenzii h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--culoare-text-light);
+}
+
+/* Responsiv */
+@media (max-width: 768px) {
+    .produs-container {
+        margin: 4rem auto 2rem auto;
+        padding: 1.5rem;
+    }
+    
+    .produs-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .produs-titlu {
+        font-size: 2rem;
+    }
+    
+    .produs-actiuni {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .buton-primar, .buton-secundar {
+        width: 100%;
+    }
+    
+    .imagine-principala {
+        height: 350px;
+    }
+    
+    .thumbnail {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+/* Efecte speciale */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.highlight {
+    animation: pulse 2s infinite;
+}
