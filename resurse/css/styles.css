@@ -1,0 +1,16 @@
+@import url('reset.css');
+@import url('variables.css');
+@import url('header.css');
+@import url('main.css');
+@import url('footer.css');
+
+/* Animations.css - dacă ai animații specifice */
+@keyframes quantum-pulse {
+    0% { opacity: 0.3; }
+    100% { opacity: 0.7; }
+}
+
+@keyframes quantum-scan {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}

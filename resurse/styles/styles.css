@@ -1,0 +1,219 @@
+@charset "UTF-8";
+body {
+  font-family: "Montserrat", sans-serif;
+  background: rgba(44, 53, 49, 0.85);
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+/* Stiluri pentru header */
+header {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-bottom: 4px solid #D9B08C;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  background: linear-gradient(45deg, #2C3531, #116466, #D9B08C);
+  background-size: 200% 200%;
+  animation: gradientShift 10s ease infinite;
+}
+
+/* Animație pentru gradient */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #D9B08C;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Meniul principal */
+.main-menu {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-direction: row; /* Default pentru desktop */
+}
+
+.main-menu li {
+  position: relative;
+  display: inline-block;
+}
+
+.main-menu a {
+  text-decoration: none;
+  color: white;
+  padding: 10px 20px;
+  display: inline-block;
+  position: relative;
+  transition: color 0.3s ease;
+  overflow: hidden;
+}
+
+/* Efectul de hover - dreptunghiul */
+.main-menu a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Lățimea butonului */
+  height: 100%; /* Înălțimea butonului */
+  background: #ffcb9a;
+  opacity: 0.2; /* Opacitatea dreptunghiului */
+  transition: all 0.4s ease;
+  transform: scale(0); /* Inițial, se va scala la 0 */
+  transform-origin: center; /* Va crește din centru */
+}
+
+/* Dreptunghiul va crește la dimensiunile butonului la hover */
+.main-menu a:hover::before {
+  transform: scale(1); /* Se va extinde complet pe buton */
+}
+
+/* Culoarea textului la hover */
+.main-menu a:hover {
+  color: #ffcb9a;
+}
+
+/* Submeniul */
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #116466;
+  border-radius: 8px;
+  padding: 0;
+  overflow: hidden;
+  transform: scale(0);
+  transform-origin: top left;
+  transition: transform 0.4s ease;
+}
+
+/* Deschiderea submeniului cu scalare */
+.has-submenu:hover .submenu {
+  display: block;
+  transform: scale(1);
+}
+
+/* Efect de hover pe elementele din submenu */
+.submenu li a {
+  padding: 12px;
+  display: block;
+  font-size: 1rem;
+  color: #D9B08C;
+  transition: all 0.3s ease-in-out;
+}
+.submenu li a:hover {
+  background: rgba(255, 203, 154, 0.2);
+  color: #ffcb9a;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Adăugarea umbrei pe text */
+}
+
+/* Hamburger menu */
+.burger-menu {
+  display: block;
+  font-size: 2rem;
+  color: #ffcb9a;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.burger-menu.open {
+  transform: rotate(90deg);
+}
+
+/* Stil pentru liniile burgerului */
+.burger-menu .line {
+  width: 30px;
+  height: 3px;
+  background-color: #ffcb9a;
+  margin: 5px 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Meniul burger */
+.burger-menu.open .line:nth-child(1) {
+  transform: rotate(45deg);
+  position: relative;
+  top: 7px;
+}
+
+.burger-menu.open .line:nth-child(2) {
+  opacity: 0;
+}
+
+.burger-menu.open .line:nth-child(3) {
+  transform: rotate(-45deg);
+  position: relative;
+  top: -7px;
+}
+
+/* Responsive pentru Burger */
+@media screen and (max-width: 768px) {
+  .main-menu {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 10px;
+    align-items: center;
+  }
+  .burger-menu.open + .main-menu {
+    display: block;
+  }
+  /* Submeniul cu efectul de clip-path - Săgeată */
+  .submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #116466;
+    padding: 0;
+    overflow: hidden;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* Săgeata */
+    transform: scale(0);
+    transform-origin: top left;
+    transition: transform 0.4s ease, clip-path 0.4s ease;
+  }
+  /* Submeniul devine vizibil */
+  .has-submenu.open .submenu {
+    display: block;
+    transform: scale(1);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* Săgeata devine vizibilă */
+  }
+  /* Culoare de fundal la hover pentru submeniu */
+  .submenu li a {
+    padding: 12px;
+    display: block;
+    font-size: 1rem;
+    color: #D9B08C;
+    transition: all 0.3s ease-in-out;
+  }
+  .submenu li a:hover {
+    background: rgba(255, 203, 154, 0.2);
+    color: #ffcb9a;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Adăugarea umbrei pe text */
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,86 @@
+/* Hide animated gallery on small and medium screens */
+@media screen and (max-width: 1200px) {
+  .container-galerie-dinamica {
+    display: none !important;
+  }
+}
+
+
+.container-galerie-dinamica {
+  width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+.galerie-dinamica {
+  position: relative; 
+  height: 70vh;
+  width: 50%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.imagine-galerie {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+  opacity: 1;
+  transition: 
+    opacity 0.5s ease-in-out,
+    clip-path 1s cubic-bezier(0.65, 0, 0.35, 1);
+  clip-path: inset(50% 0 50% 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 15px solid transparent;
+  border-image: url('/resurse/imagini/border-image.jpg') 30 round;
+  box-sizing: border-box;
+
+  /* Freeze animation in its current state on hover */
+  &:hover {
+    transition: none !important;
+  }
+
+  img {
+    width: 100%;
+    height: calc(100% - 60px);
+    object-fit: contain;
+    object-position: center;
+  }
+
+  /* Active state - fully visible image */
+  &.active {
+    opacity: 1;
+    clip-path: inset(0% 0% 0% 0%);
+  }
+
+  /* Fading out state - shrinks back to center */
+  &.fading-out {
+    opacity: 1;
+    clip-path: inset(50% 0% 50% 0%);
+  }
+}
+
+.descriere-imagine {
+  margin-top: 10px;
+  color: #ffffff;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  border: 2px solid #ff0000;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
+  text-shadow: 1px 1px 3px black;
+  z-index: 2;
+  pointer-events: none;
+  width: 80%;
+  max-width: 100%;
+  box-sizing: border-box;
+}

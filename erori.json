@@ -1,0 +1,32 @@
+{
+  "cale_baza": "/resurse/imagini/erori",
+  "eroare_default": {
+      "titlu": "Eroare",
+      "text": "A apărut o eroare necunoscută",
+      "imagine": "default.jpg",
+      "status": 500
+  },
+  "info_erori": [
+      {
+          "identificator": 400,
+          "titlu": "Cerere incorectă",
+          "text": "Serverul nu poate procesa cererea datorită unei cereri invalide.",
+          "imagine": "400.jpg",
+          "status": 400
+      },
+      {
+          "identificator": 403,
+          "titlu": "Acces interzis",
+          "text": "Nu aveți permisiunea de a vizualiza acest director.",
+          "imagine": "403.jpg",
+          "status": 403
+      },
+      {
+          "identificator": 404,
+          "titlu": "Pagina nu a fost găsită",
+          "text": "Pagina pe care încercați să o accesați nu există.",
+          "imagine": "404.jpg",
+          "status": 404
+      }
+  ]
+}

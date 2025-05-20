@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <%- include('../fragmente/head.ejs') %> <!-- Include head -->
+  </head>
+
+  <body>
+    <%- include('../fragmente/header.ejs') %> <!-- Include header -->
+    <!-- Galerie -->
+    <div class="form-container">
+  <form action="/pagini/galerie_statica" method="get">
+    <div class="form-group">
+      <label for="data">Alege luna:</label>
+      <select name="data" id="data">
+        <option value="2023-01-01">Ianuarie 2023</option>
+        <option value="2023-04-01">Aprilie 2023</option>
+        <option value="2023-07-01">Iulie 2023</option>
+        <option value="2023-10-01">Octombrie 2023</option>
+      </select>
+      <button type="submit">
+        <i class="fas fa-check-circle"></i> Aplică
+      </button>
+    </div>
+  </form>
+</div>
+
+    <div class="galerie-statica" id="galerie-statica">
+      <% if (typeof imagini !== 'undefined' && imagini.length) { 
+           let indexImagine = 0;
+           for (let i = 0; i < 15; i++) { %>
+         
+        <% if (i === 4 || i === 10) { %>
+          <figure class="galerie-item empty"></figure>
+        <% } else if (indexImagine < imagini.length) {
+             const imagine = imagini[indexImagine++]; %>
+          <figure class="galerie-item">
+            <picture>
+              <img src="<%= caleGalerie %>/<%= imagine.cale_fisier %>" alt="<%= imagine.alt || imagine.titlu || 'Imagine galerie' %>" loading="lazy">
+            </picture>
+            <figcaption>
+              <span class="index-roman"><%= i + 1 %>.</span> 
+              <%= imagine.titlu || 'Imagine fără titlu' %>
+            </figcaption>
+          </figure>
+        <% } else { %>
+          <figure class="galerie-item empty"></figure>
+        <% } %>
+
+      <% } %>
+      <% } else { %>
+        <p class="eroare-galerie">Nu există imagini disponibile pentru anotimpul <%= anotimpCurent %>.</p>
+      <% } %>
+    </div>
+
+    <%- include('../fragmente/footer.ejs') %> <!-- Include footer -->
+
+  </body>
+</html>

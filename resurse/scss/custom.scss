@@ -1,0 +1,37 @@
+// Importă fișierul Bootstrap pentru a avea acces la variabilele sale
+@use '/node_modules/bootstrap/scss/bootstrap.scss' as *;
+
+// Personalizarea culorilor pentru teme
+$primary: #3498db;  // Culoare principală albastru
+$secondary: #e73a3a;  // Culoare secundară roșu
+$background-color: #f8f9fa;  // Culoare de fundal deschisă
+$text-color: #333;  // Culoare text închisă
+
+// Personalizarea fonturilor
+$font-family-base: 'Montserrat', sans-serif;  // Setează fontul implicit
+
+// Personalizarea dimensiunilor titlurilor
+$font-size-h1: 2.5rem;
+$font-size-h2: 2rem;
+$font-size-h3: 1.75rem;
+
+// Raza de border pentru butoane și inputuri
+$border-radius: 12px;
+
+// Schimbarea culorii pentru butoanele primare
+$btn-primary-bg: $primary;
+$btn-primary-border: $primary;
+$btn-primary-color: white;
+
+// Personalizarea tema pentru elemente vizuale (ex: carduri, butoane)
+$card-bg: white;
+$card-border-color: #e0e0e0;
+
+// Media Queries pentru responsive design
+@media (min-width: 768px) {
+  $font-size-base: 1.1rem;  // Dimensiune mai mare pentru ecrane medii
+}
+
+@media (min-width: 1200px) {
+  $font-size-base: 1.2rem;  // Dimensiune și mai mare pentru ecrane mari
+}

@@ -1,0 +1,388 @@
+<section id = "zona8">
+            <section id="quantum-physics">
+
+                <!--Exercitiul 10  - bold pt termeni cheie -->
+                <h2><strong>Quantum Mechanics</strong>: The Science of the Infinitely Small</h2>
+
+
+
+                <!--Exercitiul 10  - Citate b) -->
+                <q>If you are not completely confused by quantum mechanics, you do not understand it.</q> — John Wheeler
+
+                <p> <!--Exercitiul 10 - Termeni Stiintifici c) -->
+                    <b>Quantum mechanics</b> is a fundamental branch of physics that describes the behavior of <i>matter and energy</i> at the smallest scales—atoms and subatomic particles. 
+                    Unlike classical physics, which governs the macroscopic world, quantum mechanics introduces counterintuitive concepts such as <b>superposition</b>, <b>wave-particle duality</b>, and <b>quantum entanglement</b>. 
+                    At the core of quantum mechanics lies the <i>wave function</i>, a mathematical representation that describes the probabilities of a particle's state. 
+                    The famous <i>Heisenberg Uncertainty Principle</i> states that we cannot simultaneously determine a particle's exact position and momentum with absolute precision. 
+                    This probabilistic nature challenges our classical understanding of determinism.
+                </p>
+            
+            <!--Exercitiul 11 (a) -->
+            <a href="https://news.microsoft.com/source/features/innovation/microsofts-majorana-1-chip-carves-new-path-for-quantum-computing/" target="_blank"><b>New Majorana 1 chip</b> </a> <br>
+
+            <!--Exercitiul 11 (d) -->
+            <a href="./resurse/pdf/griffiths_quantum_mechanics_2nd_edition.zip" download>
+                Download Griffith's Quantum Mechanics (ZIP)
+            </a>
+
+                <!--Exercitiul 8 -->
+
+                <figure>
+                    <picture>
+                        <source srcset="./resurse/imagini/ibm_quantum_system_small.jpg" media="(max-width: 768px)">
+                        <source srcset="./resurse/imagini/ibm_quantum_system_medium.jpg" media="(max-width: 1024px)">
+                        <source srcset="./resurse/imagini/ibm_quantum_system_large.jpg" media="(min-width: 1025px)">
+                        <img src="./resurse/imagini/ibm_quantum_system_large.jpg" alt="IBM Quantum Computer">
+                    </picture>
+                    <figcaption>IBM Quantum Computer</figcaption>
+                </figure>
+
+
+                <!--PDF IN PAGE-->
+                <object data="./resurse/pdf/Steven Weinberg - Gravitation and cosmology principles.pdf" width="500" height="500">Weinberg's Book</object> <br>
+
+
+                <!--<map> and <area>-->
+
+                <img src="./resurse/imagini/Schrodinger's eq.png" usemap="#equationMap" alt="Schrödinger Equation">
+
+                <map name="equationMap">
+                <area shape="rect" coords="33,134,90,264" href="https://en.wikipedia.org/wiki/Imaginary_unit" alt="Imaginary unit">
+                </map>
+
+                <!--Exercitiul 11 (c)-->
+
+                <div class="container-iframe">
+                    <div class="taburi-iframe">
+                    <a href="https://www.youtube.com/embed/WIyTZDHuarQ" target="ifr-video">What is Quantum Mechanics?</a>
+                    <a href="https://www.youtube.com/embed/kTXTPe3wahc" target="ifr-video" >Parallel Worlds</a>
+                    <a href="https://www.youtube.com/embed/RIqVnFtOSr4" target="ifr-video" >Space Time</a><br>
+                    </div>
+
+                
+                
+            
+                    <iframe name="ifr-video" width="560" height="315" src="https://www.youtube.com/embed/4LychvQ-BAU" 
+                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                  
+
+                <ol>
+                    <li><b>Core Concepts</b>
+                        <ul>
+                            <li><a href="#qm-subsection-1">The Origins of Quantum Mechanics</a></li>
+                            <li><a href="#qm-subsection-2">Wave-Particle Duality</a></li>
+                            <li><a href="#qm-subsection-3">Superposition and Entanglement</a></li>
+                        </ul>
+                    </li>
+                    <li><b>Foundational Principles</b>
+                        <ul>
+                            <li><a href="#qm-subsection-4">The Schrödinger Equation</a></li>
+
+                            <li><a href="#qm-subsection-5">The Uncertainty Principle</a></li>
+                        </ul>
+                    </li>
+                    <li><b>Applications</b>
+                        <ul>
+                            <li><a href="#qm-subsection-6">The Double-Slit Experiment</a></li>
+                            <li><a href="#qm-subsection-7">Quantum Technologies and Applications</a></li>
+                        </ul>
+                    </li>
+                </ol>
+
+                
+                <h2> CONTENT </h2>
+
+            <section id = "qm-subsection-1"> <!--Exercitiul 5-->
+                    <h3>The origins of Quantum Mechanics</h3>
+            </section>
+                <section id = "qm-subsection-2"> 
+                    <h3>Wave-particle duality</h3>
+            </section>
+            <section id = "qm-subsection-3"> 
+                <h3>Superposition and entanglement</h3>
+             </section>
+
+             <section id = "qm-subsection-4"> 
+                <h3>The Schrödinger Equation : 
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <!--Math ML FORMULA-->
+                        <mrow>
+                          <mi>i</mi>
+                          <mo>*</mo>
+                          <mo>&#8463;</mo> 
+                          <mo>*</mo>
+                          <mfrac>
+                            <mrow>
+                              <mo>&#x2202;</mo>
+                              <mi>&#x03C8;</mi>
+                            </mrow>
+                            <mrow>
+                              <mo>&#x2202;</mo>
+                              <mi>t</mi>
+                            </mrow>
+                          </mfrac>
+                          <mo>=</mo>
+                          <mo>-</mo>
+                          <mfrac>
+                            <mrow>
+                              <msup>
+                                <mo>&#8463;</mo>
+                                <mn>2</mn>
+                              </msup>
+                            </mrow>
+                            <mrow>
+                              <mn>2</mn>
+                              <mo>*</mo>
+                              <mi>m</mi>
+                            </mrow>
+                          </mfrac>
+                          <mo>*</mo>
+                          <msup>
+                            <mo>&#x2207;</mo>
+                            <mn>2</mn>
+                          </msup>
+                          <mi>&#x03C8;</mi>
+                          <mo>+</mo>
+                          <mi>V</mi>
+                          <mo>*</mo>
+                          <mi>&#x03C8;</mi>
+                        </mrow>
+                      </math>
+                      
+                </h3>
+             </section>
+             <section id = "qm-subsection-5"> 
+                <h3>The Uncertainty Principle</h3>
+             </section>
+             <section id = "qm-subsection-6"> 
+                <h3>The double-slit experiment</h3>
+             </section>
+             <section id = "qm-subsection-7"> 
+                <h3>Quantum technologies and applications</h3>
+             </section>
+
+            
+                      <!--Exercitiul 12-->
+
+             <details>
+                <summary>Details about Quantum Mechanics</summary>
+                <p>Quantum mechanics explains the behavior of particles at subatomic scales, where classical physics no longer applies. Key principles include:</p>
+                <ul>
+                    <li><strong>Wave-Particle Duality:</strong> Particles, like photons and electrons, exhibit both particle-like and wave-like properties.</li>
+                    <li><strong>Superposition:</strong> Particles can exist in multiple states at once until measured.</li>
+                    <li><strong>Entanglement:</strong> Particles can be entangled, meaning their states are dependent on each other, even when separated by large distances.</li>
+                </ul>
+            </details>
+        
+            <details>
+                <summary>Quantum Mechanics: Frequently Asked Questions</summary>
+                <p><strong>Q: What is quantum entanglement?</strong></p>
+                <p>A: Quantum entanglement is a phenomenon where two or more particles become interconnected in such a way that the state of one particle directly influences the state of another, no matter the distance between them.</p>
+                
+                <p><strong>Q: How does quantum computing differ from classical computing?</strong></p>
+                <p>A: Quantum computing uses quantum bits (qubits), which can exist in multiple states at once (superposition), while classical computing uses bits that are either 0 or 1.</p>
+            </details>
+        
+
+
+
+            </section>
+
+
+
+        <!--ARTIFICIAL INTELLIGENCE SECTION-->
+        <section id="artificial-intelligence">
+            <!--Exercitiul 10  - bold pt termeni cheie -->
+            <h2><strong>Artificial Intelligence</strong>: Exploring the Minds of Machines</h2>
+
+            <!--Exercitiul 10  - Citate b) -->
+            <q>The best way to predict the future is to invent it.</q> — Alan Kay
+
+            <!--Exercitiul 10 - Termeni Stiintifici c) -->
+            <p><b>Artificial Intelligence: Exploring the Minds of Machines</b> delves into the exciting world where machines mimic human intelligence to perform tasks that once required human intervention. 
+                From solving complex problems and recognizing patterns to learning from data and making autonomous decisions, AI is transforming industries like healthcare, finance, and entertainment.
+                 This section explores the foundational concepts of AI, including <i>machine learning</i>, <i>deep learning</i>, <i>natural language processing</i>, and more, offering insights into how AI is shaping the future of technology and society.</p>
+            
+
+            <!--Exercitiul 8 -->
+
+            <figure>
+                <picture>
+                <source srcset="./resurse/imagini/artificial-intelligence-small.jpg" media="(max-width: 768px)">
+                <source srcset="./resurse/imagini/artificial-intelligence-medium.jpg" media="(max-width: 1024px)">
+                <source srcset="./resurse/imagini/artificial-intelligence-large.jpg" media="(min-width: 1025px)">
+                <img src = "./resurse/imagini/artificial-intelligence-large.jpg" alt = "Artificial Intelligence">
+                </picture>
+                <figcaption>Artificial Intelligence</figcaption>
+            </figure>
+
+            <ol>
+            <li><b>Overview of AI</b>
+                <ul>
+                    <li><a href="#ai-subsection-1">Introduction to Artificial Intelligence</a></li>
+                </ul>
+            </li>                
+            <li><b>Core concepts</b>
+                <ul>
+                    <li><a href="#ai-subsection-2">Machine Learning</a></li>
+                    <li><a href="#ai-subsection-3">Deep Learning</a></li>
+                    <li><a href="#ai-subsection-4">Natural Language Processing (NLP)</a></li>
+                    <li><a href="#ai-subsection-5">Computer Vision</a></li>
+                </ul>
+            </li>
+            <li><b>Applications of AI</b>
+                <ul>
+                    <li><a href="#ai-subsection-6">Quantum AI (Quantum Machine Learning)</a></li>
+                    <li><a href="#ai-subsection-7">AI in Healthcare and Life Sciences</a></li>
+                </ul>
+            </li>
+            </ol>
+                
+        <h2>CONTENT</h2>
+        <section id = "ai-subsection-1"> <!--Exercitiul 5-->
+                <h3>Introduction to Artificial Intelligence</h3>
+        </section>
+
+        <section id = "ai-subsection-2"> 
+                <h3>Machine Learning</h3>
+        </section>
+
+        <section id = "ai-subsection-3"> 
+            <h3>Deep Learning</h3>
+         </section>
+
+         <section id = "ai-subsection-4"> 
+            <h3>Natural Language Processing (NLP)</h3>
+         </section>
+
+         <section id = "ai-subsection-5"> 
+            <h3>Computer Vision</h3>
+         </section>
+
+         <section id = "ai-subsection-6"> 
+            <h3>Quantum AI (Quantum Machine Learning)</h3>
+         </section>
+
+         <section id = "ai-subsection-7"> 
+            <h3>AI in Healthcare and Life Sciences</h3>
+         </section>
+
+         <!--Exercitiul 12-->
+         <details>
+            <summary>Details about Artificial Intelligence</summary>
+            <p>Artificial Intelligence encompasses several subfields, including:</p>
+            <ul>
+                <li><strong>Machine Learning:</strong> Algorithms that allow machines to learn from and make predictions based on data.</li>
+                <li><strong>Deep Learning:</strong> A subset of machine learning using neural networks for tasks like image recognition and natural language processing.</li>
+                <li><strong>Natural Language Processing (NLP):</strong> Enables machines to understand and interact with human language.</li>
+            </ul>
+        </details>
+    
+        <details>
+            <summary>Artificial Intelligence: Frequently Asked Questions</summary>
+            <p><strong>Q: What is machine learning?</strong></p>
+            <p>A: Machine learning is a method of data analysis that automates analytical model building. It uses algorithms that can learn from and make predictions based on data.</p>
+            
+            <p><strong>Q: How is AI used in healthcare?</strong></p>
+            <p>A: AI in healthcare helps with diagnosis, treatment planning, drug discovery, and personalized medicine by analyzing medical data, including images and genetic information.</p>
+        </details>
+
+        </section>
+
+
+
+
+         <!--Applied Math-->
+         <section id="applied-mathematics">
+
+            <!--Exercitiul 10  - bold pt termeni cheie -->
+            <h2><strong>Applied Mathematics</strong>: Solving Real-World Problems with Numbers</h2>
+
+            <!--Exercitiul 10  - Citate b) -->
+            <q>Mathematics is the most abstract of all the sciences. It is the poetry of logical ideas. </q> — Albert Einstein
+        
+            <!--Exercitiul 10 - Termeni Stiintifici c) -->
+            <p><b>Applied Mathematics: Solving Real-World Problems with Numbers</b> explores how mathematical theories and techniques are used to tackle practical challenges in fields like physics, engineering, economics, and computer science. 
+                This section covers essential <i>applied math</i> concepts, such as <i>differential equations</i>, optimization, <i>statistical methods</i>, and mathematical modeling, demonstrating how math is used to solve real-world problems and drive innovation.</p>
+            
+            <ol>
+                <li><b>Overview of Mathematics</b>
+                    <ul>
+                        <li><a href="#am-subsection-1">Introduction to Applied Mathematics</a></li>
+                    </ul>
+                </li>
+                <li><b>Nature's Infinite Patterns</b>
+                    <ul>
+                        <li><a href="#am-subsection-2">Fractals and Chaos Theory</a></li>
+                    </ul>
+                </li>
+                <li><b>The Art of Luck</b>
+                    <ul>
+                        <li><a href="#am-subsection-3">Probability and Statistics</a></li>
+                        <li><a href="#am-subsection-4">Mathematical Modeling</a></li>
+                        <li><a href="#am-subsection-5">Game Theory and Decision Making</a></li>
+                    </ul>
+                </li>
+                <li><b>The Hidden Secrets</b>
+                    <ul>
+                        <li><a href="#am-subsection-6">Cryptography and Number Theory</a></li>
+                        <li><a href="#am-subsection-7">Computational Mathematics</a></li>
+                    </ul>
+                </li>
+                <li><b>The Path for Success</b>
+                    <ul>
+                        <li><a href="#am-subsection-8">Network Theory and Graph Theory</a></li>
+                    </ul>
+                </li>
+            </ol>
+                
+
+            <h2>CONTENT</h2>
+            <section id="am-subsection-1"> <!--Exercitiul 5-->
+                <h3>Introduction to Applied Mathematics</h3>
+            </section>
+            <section id="am-subsection-2">
+                <h3>Fractals and Chaos Theory</h3>
+            </section>
+            <section id="am-subsection-3">
+                <h3>Probability and Statistics</h3>
+            </section>
+            <section id="am-subsection-4">
+                <h3>Mathematical Modeling</h3>
+            </section>
+            <section id="am-subsection-5">
+                <h3>Game Theory and Decision Making</h3>
+            </section>
+            <section id="am-subsection-6">
+                <h3>Cryptography and Number Theory</h3>
+            </section>
+            <section id="am-subsection-7">
+                <h3>Computational Mathematics</h3>
+            </section>
+            <section id="am-subsection-8">
+                <h3>Network Theory and Graph Theory</h3>
+            </section>
+
+                     <!--Exercitiul 12-->
+
+            <details>
+                <summary>Details about Applied Mathematics</summary>
+                <p>Applied mathematics involves using mathematical methods to solve problems in real-world scenarios. Key areas include:</p>
+                <ul>
+                    <li><strong>Differential Equations:</strong> Equations that describe how quantities change over time, used in fields such as physics and engineering.</li>
+                    <li><strong>Optimization:</strong> The process of finding the best solution to a problem within given constraints, widely used in economics and logistics.</li>
+                    <li><strong>Probability and Statistics:</strong> Mathematical methods used for analyzing data, making predictions, and assessing uncertainty.</li>
+                </ul>
+            </details>
+        
+            <details>
+                <summary>Applied Mathematics: Frequently Asked Questions</summary>
+                <p><strong>Q: What is mathematical modeling?</strong></p>
+                <p>A: Mathematical modeling involves creating mathematical representations of real-world phenomena to predict future behavior and inform decision-making.</p>
+        
+                <p><strong>Q: How is applied mathematics used in engineering?</strong></p>
+                <p>A: In engineering, applied mathematics is used for designing systems, optimizing processes, and solving problems related to heat, fluid flow, and material stress.</p>
+            </details>
+        </section>
+    </section>

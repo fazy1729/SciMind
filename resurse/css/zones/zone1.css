@@ -1,0 +1,96 @@
+.quantum-hero {
+    grid-area: zona1;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid var(--neon-blue);
+    box-shadow: var(--box-glow);
+    background: linear-gradient(
+        135deg, 
+        rgba(10, 10, 26, 0.8), 
+        rgba(0, 21, 36, 0.8)
+    );
+}
+
+.quantum-hero h1 {
+    font-size: 3.5rem;
+    background: linear-gradient(
+        90deg, 
+        var(--neon-blue), 
+        var(--neon-purple)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: var(--text-glow);
+    margin-bottom: 1.5rem;
+    animation: text-flicker 3s infinite alternate;
+}
+
+@keyframes text-flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow: 
+            0 0 8px var(--neon-blue),
+            0 0 16px var(--neon-purple);
+    }
+    20%, 24%, 55% {
+        text-shadow: none;
+    }
+}
+
+.quantum-hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin-bottom: 2.5rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Buton CTA */
+.quantum-cta {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: transparent;
+    color: var(--neon-blue);
+    border: 2px solid var(--neon-blue);
+    border-radius: 50px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: var(--transition-medium);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 247, 255, 0.3);
+    z-index: 1;
+}
+
+.quantum-cta:hover {
+    color: var(--dark-space);
+    background: var(--neon-blue);
+    box-shadow: 0 0 30px rgba(0, 247, 255, 0.6);
+    transform: translateY(-3px);
+}
+
+.quantum-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 247, 255, 0.4),
+        transparent
+    );
+    transition: var(--transition-slow);
+    z-index: -1;
+}
+
+.quantum-cta:hover::before {
+    left: 100%;
+}

@@ -1,0 +1,312 @@
+<!DOCTYPE html> <!--Exercitiul 1-->
+
+<%- include('fragmente/head') %>
+
+
+
+<html lang = "en">
+    <body>
+      
+      <%- include('fragmente/header') %>
+
+        
+    
+        <!-- Zona 1 -->
+        
+
+        
+        
+        
+
+        <main class = "grid">
+            <section id="zone1" class="grid-zone">
+                    <h1>Explore the Fascinating World of Quantum Physics and Artificial Intelligence!</h1>
+                    <p>Discover interactive educational resources, online courses, and the latest scientific breakthroughs.</p>
+                    <a href="#quantum-physics" class="cta-button">Start Your Journey</a>
+                </div>
+            </section>
+    
+            <section id="important-events">
+                <div class="table-container">
+                    <table id="stilizare-tabel">
+                        <caption>Important Upcoming Scientific Events</caption>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Event</th>
+                                <th>Location</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>April 15, 2025</td>
+                                <td>Quantum Computing Workshop</td>
+                                <td>Berlin, Germany</td>
+                                <td><a href="https://www.quantumcomputingworkshop.com" target="_blank">More info</a></td>
+                            </tr>
+                            <tr>
+                                <td>May 3, 2025</td>
+                                <td>AI and Robotics Symposium</td>
+                                <td>Paris, France</td>
+                                <td><a href="https://www.aisymposium.com" target="_blank">More info</a></td>
+                            </tr>
+                            <tr>
+                                <td>June 10, 2025</td>
+                                <td>Applied Mathematics Conference</td>
+                                <td>New York, USA</td>
+                                <td><a href="https://www.appliedmathconf.com" target="_blank">More info</a></td>
+                            </tr>
+                            <tr>
+                                <td>July 20, 2025</td>
+                                <td>Quantum Mechanics Webinar</td>
+                                <td>Online</td>
+                                <td><a href="https://www.quantumwebinar.com" target="_blank">More info</a></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="4">Stay tuned for more upcoming events!</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </section>
+            
+            
+
+
+    
+            <!--QUANTUM MECHANICS SECTION-->
+            <section id="zona8"  class="grid-zone">
+                <!-- Hero Section -->
+                <div class="science-hero">
+                  <h2>Quantum Mechanics: The Science of the Infinitely Small</h2>
+                  <blockquote>
+                    "If you are not completely confused by quantum mechanics, you do not understand it." 
+                    <cite>— John Wheeler</cite>
+                  </blockquote>
+                </div>
+              
+                <!-- Core Content -->
+                <div class="science-content">
+                  <div class="science-text">
+                    <p>
+                      <strong>Quantum mechanics</strong> is a fundamental branch of physics that describes 
+                      the behavior of matter and energy at atomic and subatomic scales. It introduces 
+                      revolutionary concepts like <strong>superposition</strong>, <strong>wave-particle duality</strong>, 
+                      and <strong>quantum entanglement</strong>.
+                    </p>
+                    
+                    <div class="science-highlights">
+                      <div class="highlight-card">
+                        <h3>Wave-Particle Duality</h3>
+                        <p>Particles can behave as both waves and particles depending on observation.</p>
+                      </div>
+                      
+                      <div class="highlight-card">
+                        <h3>Quantum Entanglement</h3>
+                        <p>Particles remain connected even when separated by large distances.</p>
+                      </div>
+                    </div>
+                  </div>
+              
+                  <div class="science-media">
+                    <figure>
+                      <img src="./resurse/imagini/ibm_quantum_system_medium.jpg" 
+                           alt="IBM Quantum Computer" 
+                           class="responsive-img">
+                      <figcaption>IBM Quantum Computing System</figcaption>
+                    </figure>
+                  </div>
+                </div>
+              
+                <!-- Call to Action -->
+                <div class="science-cta">
+                  <a href="#quantum-physics" class="cta-button">Explore Quantum Physics</a>
+                  <a href="./resurse/pdf/griffiths_quantum_mechanics_2nd_edition.zip" 
+                     download 
+                     class="cta-button secondary">
+                    Download Quantum Mechanics Textbook
+                  </a>
+
+                  <!--MATHML FORMULA-->
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle displaystyle="true">
+                      <mrow>
+                        <!-- E cu font italic și culoare roșie -->
+                        <mi mathvariant="italic">
+                          <mstyle mathcolor="red">E</mstyle>
+                        </mi>
+                        <!-- = cu stil normal -->
+                        <mo>=</mo>
+                        <!-- m cu bold și culoare albastră -->
+                        <mi>
+                          <mstyle mathvariant="bold" mathcolor="blue">m</mstyle>
+                        </mi>
+                        <!-- c cu font italic și culoare verde, la pătrat -->
+                        <msup>
+                          <mi>
+                            <mstyle mathvariant="italic" mathcolor="green">c</mstyle>
+                          </mi>
+                          <mn>2</mn>
+                        </msup>
+                      </mrow>
+                    </mstyle>
+                  </math>
+                  
+                </div>
+              
+            </section>
+
+     
+        
+        <div section id="zona4" class="grid-zone">
+            <h2>Anunțuri</h2>
+            <p>Acesta este un placeholder pentru secțiunea de anunțuri. Actualizați cu anunțuri relevante.</p>
+        </div>
+
+        <div section id="zona5" class="grid-zone">
+            <h2>Utilizatori Online</h2>
+            <ul>
+              <li>Utilizator 1</li>
+              <li>Utilizator 2</li>
+              <li>Utilizator 3</li>
+              <!-- Mai mulți utilizatori vor fi adăugați aici. -->
+            </ul>
+          </div>
+
+          <div section id="zona6" class="grid-zone">
+            <h2>Date despre Utilizator și Statistici</h2>
+            <ul>
+                <li><strong>IP utilizator:</strong> <%= ip %></li>
+                <li><strong>Accesibilitate:</strong> [Detalii]</li>
+                <li><strong>Statistici:</strong> [Detalii]</li>
+            </ul>
+            <hr class="hr-decorativ">
+        </div>
+
+          <div section id="zona7" class="grid-zone">
+            <h2>Date despre Site și Server</h2>
+            <p>Acesta este un placeholder pentru informațiile despre site și server.</p>
+            <ul>
+              <li><strong>Versiune Site:</strong> [Versiunea actuală]</li>
+              <li><strong>Stare Server:</strong> [Stare actuală]</li>
+              <li><strong>Ultima actualizare:</strong> [Data ultimei actualizări]</li>
+            </ul>
+          </div>
+
+
+          
+
+
+          <div section id="zona3" class="grid-zone">
+            <h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta quasi architecto quidem ipsam dolor. Nisi aperiam eveniet voluptate officia. Repudiandae, quaerat vel laboriosam quia nulla consectetur sunt voluptates iusto tempore.</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil sed voluptatem harum non, blanditiis sunt quia culpa. Eum enim ipsum neque necessitatibus voluptate doloremque soluta veniam commodi pariatur incidunt? Debitis..</p>
+          </div>
+
+
+
+
+          
+
+
+        </main>
+
+
+
+                      <!-- VIDEO SECTION -->
+  <section id="video-section" class="grid-zone">
+    <h2>Quantum Entanglement Explained</h2>
+    
+    <div class="video-container">
+      <video 
+        controls
+        poster="./resurse/video/quantum-video-poster.jpg"
+        preload="auto"
+        class="responsive-video"
+      >
+        <!-- Surse video în formate diferite -->
+        <source src="./resurse/video/quantum.mp4" type="video/mp4">
+        <source src="./resurse/video/quantum.webm" type="video/webm">
+        
+        <!-- Trackuri subtitrări -->
+        <track 
+          kind="subtitles" 
+          src="./resurse/video/subtitles_ro.vtt" 
+          srclang="ro" 
+          label="Română" 
+          default>
+        <track 
+          kind="subtitles" 
+          src="./resurse/video/subtitles_eng.vtt" 
+          srclang="en" 
+          label="English">
+        
+        <p>Browserul tău nu suportă elementul video. Poți descărca videoclipul <a href="./resurse/video/quantum.mp4">aici</a>.</p>
+      </video>
+    </div>
+    
+    <div class="video-description">
+      <p>Experiment of Quantum Entanglement</p>
+    </div>
+  </section>
+
+
+
+  <section id="stilizare-taburi" class="grid-zone">
+    <div class="container-iframe">
+        <div class="taburi-iframe">
+            <a href="https://www.youtube.com/embed/qJZ1Ez28C-A" target="ifr-video">Strange QM</a>
+            <a href="https://www.youtube.com/embed/Kv8N9alyYNc" target="ifr-video">Quantum Computing</a>
+            <a href="https://www.youtube.com/embed/dm6ux6d6kCA" target="ifr-video">Shor's Alghoritm</a>
+        </div>
+        <iframe name="ifr-video" width="560" height="315" src="https://www.youtube.com/embed/qJZ1Ez28C-A" 
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        </iframe>
+    </div>
+</section>
+
+        
+        <%- include('fragmente/footer') %>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+  // Toggle meniul principal
+  document.getElementById('hamburger-icon').addEventListener('click', function() {
+    document.getElementById('nav-menu').classList.toggle('active');
+  });
+
+  // Gestionare submeniuri
+  document.querySelectorAll('.has-submenu > a').forEach(item => {
+    item.addEventListener('click', function(e) {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        const parent = this.parentElement;
+        const wasOpen = parent.classList.contains('open');
+        
+        // Închide toate celelalte submeniuri
+        document.querySelectorAll('.has-submenu').forEach(el => {
+          if (el !== parent) {
+            el.classList.remove('open');
+            el.querySelector('.submenu').style.maxHeight = '0';
+          }
+        });
+        
+        // Deschide/închide submeniul curent
+        if (!wasOpen) {
+          parent.classList.add('open');
+          parent.querySelector('.submenu').style.maxHeight = '500px';
+        } else {
+          parent.classList.remove('open');
+          parent.querySelector('.submenu').style.maxHeight = '0';
+        }
+      }
+    });
+  });
+});
+</script>
+
+    </body>
+</html>
+
+

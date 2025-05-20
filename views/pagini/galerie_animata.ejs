@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <%- include('../fragmente/head.ejs') %>
+    <link rel="stylesheet" href="/resurse/css/galerie_dinamica.css">
+  </head>
+
+  <body>
+    <%- include('../fragmente/header.ejs') %>
+
+    <div class="container-galerie-dinamica">
+      <div class="galerie-dinamica" id="galerie-dinamica">
+        <!-- Imagini vor fi adăugate dinamic prin JavaScript -->
+      </div>
+    </div>
+
+    <%- include('../fragmente/footer.ejs') %>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+  const numarImagini = Math.pow(2, Math.floor(Math.random() * 4) + 1);
+  const imaginiDisponibile = <%- JSON.stringify(imagini) %>.filter((_, index) => index % 2 === 0);
+  const imaginiSelectate = imaginiDisponibile.slice(0, numarImagini);
+
+  const galerie = document.getElementById('galerie-dinamica');
+  galerie.style.setProperty('--numar-imagini', numarImagini);
+
+  // Add images to the gallery
+  imaginiSelectate.forEach(imagine => {
+    const element = document.createElement('div');
+    element.className = 'imagine-galerie';
+    element.innerHTML = `
+      <img src="<%= caleGalerie %>/${imagine.cale_fisier}" 
+           alt="${imagine.alt || imagine.titlu || 'Imagine galerie'}" 
+           loading="lazy">
+      <p class="descriere-imagine">${imagine.text_descriere || ''}</p>
+    `;
+    galerie.appendChild(element);
+  });
+
+  // Animation control variables
+  let indexCurent = 0;
+    let timeoutId;
+    let isPaused = false;
+    let animationStartTime;
+    let currentPhase = 'showing'; // 'showing' or 'hiding'
+    let progress = 0;
+    const durataAfisare = 1000;
+    const durataTranzitie = 1500;
+    const imagini = document.querySelectorAll('.imagine-galerie');
+
+    // Pause animation on hover
+    galerie.addEventListener('mouseenter', () => {
+        if (!isPaused) {
+            isPaused = true;
+            clearTimeout(timeoutId);
+            
+            // Calculate exact progress
+            const elapsed = Date.now() - animationStartTime;
+            const totalDuration = currentPhase === 'showing' ? durataAfisare : durataTranzitie;
+            progress = Math.min(elapsed / totalDuration, 1);
+            
+            // Freeze current state
+            imagini.forEach(img => {
+                img.classList.add('frozen');
+                if (img.classList.contains('active')) {
+                    const currentClip = currentPhase === 'showing' 
+                        ? `inset(${50 - (progress * 50)}% 0 ${50 - (progress * 50)}% 0)`
+                        : `inset(${progress * 50}% 0 ${progress * 50}% 0)`;
+                    img.style.clipPath = currentClip;
+                }
+            });
+        }
+    });
+
+    // Resume animation
+    galerie.addEventListener('mouseleave', () => {
+        if (isPaused) {
+            isPaused = false;
+            
+            // Remove freeze and restore animation
+            imagini.forEach(img => {
+                img.classList.remove('frozen');
+                img.style.clipPath = '';
+            });
+
+            // Continue from exact progress point
+            const remainingTime = currentPhase === 'showing' 
+                ? durataAfisare * (1 - progress)
+                : durataTranzitie * (1 - progress);
+
+            if (currentPhase === 'showing') {
+                timeoutId = setTimeout(() => {
+                    imagini[indexCurent].classList.add('fading-out');
+                    currentPhase = 'hiding';
+                    animationStartTime = Date.now();
+                    progress = 0;
+                    
+                    timeoutId = setTimeout(() => {
+                        indexCurent = (indexCurent + 1) % imagini.length;
+                        currentPhase = 'showing';
+                        animareGalerie();
+                    }, durataTranzitie);
+                }, remainingTime);
+            } else {
+                timeoutId = setTimeout(() => {
+                    indexCurent = (indexCurent + 1) % imagini.length;
+                    currentPhase = 'showing';
+                    animareGalerie();
+                }, remainingTime);
+            }
+        }
+    });
+
+    function animareGalerie() {
+        if (isPaused) return;
+
+        // Reset all images
+        imagini.forEach(img => {
+            img.classList.remove('active', 'fading-out');
+            img.style.clipPath = 'inset(50% 0 50% 0)';
+        });
+
+        // Start new animation - expand from center
+        imagini[indexCurent].classList.add('active');
+        currentPhase = 'showing';
+        animationStartTime = Date.now();
+        progress = 0;
+
+        // Set initial state (centered)
+        imagini[indexCurent].style.clipPath = 'inset(50% 0 50% 0)';
+        // Force repaint
+        void imagini[indexCurent].offsetWidth;
+        // Animate to full size
+        imagini[indexCurent].style.clipPath = 'inset(0% 0 0% 0)';
+
+        timeoutId = setTimeout(() => {
+            imagini[indexCurent].classList.add('fading-out');
+            currentPhase = 'hiding';
+            animationStartTime = Date.now();
+            progress = 0;
+            
+            // Animate back to center
+            imagini[indexCurent].style.clipPath = 'inset(0% 0 0% 0)';
+            // Force repaint
+            void imagini[indexCurent].offsetWidth;
+            // Animate to centered
+            imagini[indexCurent].style.clipPath = 'inset(50% 0 50% 0)';
+
+            timeoutId = setTimeout(() => {
+                indexCurent = (indexCurent + 1) % imagini.length;
+                animareGalerie();
+            }, durataTranzitie);
+        }, durataAfisare);
+    }
+
+    animareGalerie();
+});
+</script>
+  </body>
+</html>

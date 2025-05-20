@@ -1,0 +1,38 @@
+:root {
+    /* Culori */
+    --neon-blue: #00f7ff;
+    --neon-purple: #bd00ff;
+    --neon-pink: #ff00b8;
+    --dark-space: #0a0a1a;
+    --deep-space: #121230;
+    --quantum-dark: #001524;
+    
+    /* Efecte */
+    --text-glow: 0 0 8px var(--neon-blue);
+    --box-glow: 0 0 20px rgba(0, 247, 255, 0.6);
+    --particle-glow: 0 0 10px currentColor;
+    
+    /* Dimensiuni */
+    --header-height: 100px;
+    --footer-height: 120px;
+    --border-radius: 12px;
+    --border-radius-sm: 8px;
+    
+    /* Tranzitii */
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+@media (max-width: 1024px) {
+    :root {
+        --border-radius: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --border-radius: 8px;
+        --header-height: 80px;
+    }
+}
