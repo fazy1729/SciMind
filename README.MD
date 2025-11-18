@@ -32,7 +32,7 @@
 **SciMind** utilizes a high-contrast aesthetic inspired by advanced geometric structures and deep-space interfaces. Our palette combines the darkness of the void with the warmth of illumination.
 
 <div align="center">
-  <img src="SciMind\schema_cromatica.png" alt="SciMind Design System" width="100%" style="border-radius: 10px; box-shadow: 0px 0px 20px rgba(17, 100, 102, 0.4);">
+  <img src="resurse/imagini/schema_cromatica.png" alt="SciMind Design System" width="100%" style="border-radius: 10px; box-shadow: 0px 0px 20px rgba(17, 100, 102, 0.4);">
 </div>
 
 ### 🎨 The Palette
@@ -74,22 +74,22 @@ Our goal is to demystify complex subjects and inspire scientific curiosity throu
 A visual tour of the platform, educational materials, and the integrated shop.
 
 ### 1. User Interface
-| ![Homepage SciMind](SciMind/resurse/imagini/home_main.png) | ![Dashboard Courses](SciMind/resurse/imagini/dashboard.png) |
+| ![Homepage SciMind](resurse/imagini/home_main.png) | ![Dashboard Courses](resurse/imagini/dashboard.png) |
 |:--:|:--:|
 | *Main Page - The Knowledge Portal* | *User Dashboard & Progress* |
 
 ### 2. Educational Modules
-| ![Quantum Lessons](SciMind/resurse/imagini/lesson_quantum.png) | ![Math Visuals](SciMind/resurse/imagini/lesson_math.png) |
+| ![Quantum Lessons](resurse/imagini/lesson_quantum.png) | ![Math Visuals](resurse/imagini/lesson_math.png) |
 |:--:|:--:|
 | *Interactive Module: Quantum Physics* | *Complex Mathematical Visualizations* |
 
 ### 3. SciMind Shop
-| ![Products Page](SciMind/resurse/imagini/shop_overview.png) | ![Book Details](SciMind/resurse/imagini/product_book.png) |
+| ![Products Page](resurse/imagini/shop_overview.png) | ![Book Details](resurse/imagini/product_book.png) |
 |:--:|:--:|
 | *Store Overview* | *Product Detail: Specialized Books* |
 
 ### 4. Events & Community
-| ![Forum](SciMind/resurse/imagini/community.png) |
+| ![Forum](resurse/imagini/community.png) |
 |:--:|
 | *Scientific Events Calendar* |
 
@@ -107,7 +107,6 @@ SciMind offers a diverse range of materials to deepen your understanding.
 | **Software** | 💾 Scripts & Models | Pre-trained AI models and Jupyter notebooks. |
 
 ---
-
 
 ## 🛠 Tech Stack
 
