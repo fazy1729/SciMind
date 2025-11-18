@@ -32,7 +32,7 @@
 **SciMind** utilizes a high-contrast aesthetic inspired by advanced geometric structures and deep-space interfaces. Our palette combines the darkness of the void with the warmth of illumination.
 
 <div align="center">
-  <img src="resurse/imagini/schema_cromatica.png" alt="SciMind Design System" width="100%" style="border-radius: 10px; box-shadow: 0px 0px 20px rgba(17, 100, 102, 0.4);">
+  <img src="schema_cromatica.png" alt="SciMind Design System" width="100%" style="border-radius: 10px; box-shadow: 0px 0px 20px rgba(17, 100, 102, 0.4);">
 </div>
 
 ### 🎨 The Palette
